@@ -168,21 +168,21 @@ export async function fetchCaseFromCourtApi(params: FetchParams): Promise<CaseDa
             type: 'order',
             date: '20-07-2024', 
             description: 'The court has considered the application for interim relief filed by the petitioner. After hearing both parties, the court grants interim relief as prayed for, subject to the petitioner furnishing an undertaking as per the terms specified in the order.', 
-            pdfUrl: '#' 
+            pdfUrl: 'https://example.com/order.pdf'
           },
           { 
             title: 'Notice issued to Respondents',
             type: 'notice',
             date: '15-06-2024', 
             description: 'Notice issued to all respondents to file their response within 4 weeks. The matter is listed for hearing on the next date.', 
-            pdfUrl: '#'
+            pdfUrl: 'https://example.com/order.pdf'
           },
           { 
             title: 'Case Filed and Initial Orders',
             type: 'order',
             date: '15-03-2024', 
             description: 'Petition filed and admitted. Issue notice to respondents. Registry to serve notice through all permissible modes including email and registered post.', 
-            pdfUrl: '#' 
+            pdfUrl: 'https://example.com/order.pdf'
           },
       ],
   };
