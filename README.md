@@ -1,3 +1,4 @@
+
 # CourtLook
 
 CourtLook is a Next.js web application designed to demonstrate fetching and displaying case metadata and orders from Indian court websites. It provides a simple UI for users to input case details and view the corresponding information.

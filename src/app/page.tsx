@@ -25,9 +25,8 @@ import {
 import { Loader2 } from 'lucide-react';
 import { CaseDetails } from '@/components/case-details';
 import { Logo } from '@/components/logo';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import dynamic from 'next/dynamic';
 
 const initialState: ActionState = {
   data: null,
@@ -44,8 +43,30 @@ function SubmitButton() {
   );
 }
 
-function CaseForm({ formAction }: { formAction: (payload: FormData) => void }) {
+export default function Home() {
+  const [state, formAction] = useActionState(fetchCaseData, initialState);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    if (state.error) {
+      toast({
+        variant: 'destructive',
+        title: 'Search Failed',
+        description: state.error,
+      });
+    }
+  }, [state.error, toast]);
+
   return (
+    <main className="flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12">
+      <div className="w-full max-w-2xl mx-auto space-y-8">
+        <header className="text-center">
+          <Logo />
+          <p className="text-muted-foreground mt-2">
+            Enter case details to fetch the latest information and orders.
+          </p>
+        </header>
+
         <Card className="shadow-lg">
           <form action={formAction}>
             <CardHeader>
@@ -90,42 +111,6 @@ function CaseForm({ formAction }: { formAction: (payload: FormData) => void }) {
             </CardFooter>
           </form>
         </Card>
-  );
-}
-
-const DynamicCaseForm = dynamic(() => Promise.resolve(CaseForm), { ssr: false });
-
-
-export default function Home() {
-  const [state, formAction] = useActionState(fetchCaseData, initialState);
-  const { toast } = useToast();
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (state.error) {
-      toast({
-        variant: 'destructive',
-        title: 'Search Failed',
-        description: state.error,
-      });
-    }
-  }, [state.error, toast]);
-
-  return (
-    <main className="flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12">
-      <div className="w-full max-w-2xl mx-auto space-y-8">
-        <header className="text-center">
-          <Logo />
-          <p className="text-muted-foreground mt-2">
-            Enter case details to fetch the latest information and orders.
-          </p>
-        </header>
-
-        {isClient ? <DynamicCaseForm formAction={formAction} /> : <Card className="shadow-lg"><CardHeader><CardTitle>Loading Form...</CardTitle></CardHeader><CardContent><Loader2 className="mx-auto h-8 w-8 animate-spin" /></CardContent></Card>}
         
         {state.data && <CaseDetails data={state.data} />}
         
