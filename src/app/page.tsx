@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
 import { fetchCaseData, type ActionState } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import {
@@ -42,7 +43,7 @@ function SubmitButton() {
 }
 
 export default function Home() {
-  const [state, formAction] = useFormState(fetchCaseData, initialState);
+  const [state, formAction] = useActionState(fetchCaseData, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
