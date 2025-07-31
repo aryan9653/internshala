@@ -129,12 +129,15 @@ export async function fetchCaseFromCourtApi(params: FetchParams): Promise<CaseDa
   // This is a simulation. In a real application, the Firecrawl logic above
   // would handle fetching and parsing. We return mock data here to ensure
   // the frontend can be demonstrated reliably.
+  const currentYear = new Date().getFullYear();
+  const caseStatus = parseInt(params.filingYear, 10) < currentYear ? 'Disposed' : 'Pending';
+
   const mockData: CaseData = {
       caseType: params.caseType,
       caseNumber: params.caseNumber,
       filingYear: params.filingYear,
       caseId: `${params.caseType.replace(/\./g, '')}/${params.caseNumber}/${params.filingYear}`,
-      status: 'Pending',
+      status: caseStatus,
       court: 'Delhi High Court',
       judge: "Hon'ble Justice Rajesh Kumar",
       parties: {
