@@ -12,14 +12,16 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { FileText, ShieldAlert, Sparkles, Wand2, Bot, Loader2 } from 'lucide-react';
+import { FileText, ShieldAlert, Sparkles, Wand2, Bot, Loader2, Clock } from 'lucide-react';
 
 interface CaseDetailsProps {
   data: CaseData;
   summary: string | null;
   isSummaryLoading: boolean;
+  summaryTime: number | null;
   explanation: ExplainOrderOutput | null;
   isExplanationLoading: boolean;
+  explanationTime: number | null;
   onExplainOrder: (orderDescription: string) => void;
 }
 
@@ -71,9 +73,11 @@ function OrderCard({
 export function CaseDetails({ 
     data, 
     summary, 
-    isSummaryLoading, 
+    isSummaryLoading,
+    summaryTime,
     explanation, 
     isExplanationLoading,
+    explanationTime,
     onExplainOrder 
 }: CaseDetailsProps) {
   return (
@@ -96,9 +100,17 @@ export function CaseDetails({
         {summary && (
              <Card className="bg-gradient-to-br from-primary/10 to-background">
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Sparkles className="text-primary" />
-                        AI-Generated Summary
+                    <CardTitle className="flex items-center justify-between">
+                        <span className="flex items-center gap-2">
+                            <Sparkles className="text-primary" />
+                            AI-Generated Summary
+                        </span>
+                        {summaryTime && (
+                            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                                <Clock className="h-3 w-3" />
+                                {summaryTime.toFixed(2)}s
+                            </span>
+                        )}
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -154,7 +166,15 @@ export function CaseDetails({
             {explanation && (
                 <Alert>
                     <Bot className="h-4 w-4" />
-                    <AlertTitle>AI Explanation</AlertTitle>
+                    <AlertTitle className="flex items-center justify-between">
+                        <span>AI Explanation</span>
+                        {explanationTime && (
+                           <span className="flex items-center gap-1 text-xs text-muted-foreground font-normal">
+                                <Clock className="h-3 w-3" />
+                                {explanationTime.toFixed(2)}s
+                            </span>
+                        )}
+                    </AlertTitle>
                     <AlertDescription>
                         <p className="font-semibold mb-2">{explanation.summary}</p>
                         <ul className="list-disc pl-5 space-y-1">

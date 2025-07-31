@@ -56,15 +56,21 @@ function CaseSearchForm() {
   
   const [isSummaryLoading, startSummaryTransition] = useTransition();
   const [summary, setSummary] = useState<string | null>(null);
+  const [summaryTime, setSummaryTime] = useState<number | null>(null);
 
   const [explanation, setExplanation] = useState<ExplainOrderOutput | null>(null);
   const [isExplanationLoading, startExplanationTransition] = useTransition();
+  const [explanationTime, setExplanationTime] = useState<number | null>(null);
 
 
   const handleExplainOrder = (orderDescription: string) => {
     startExplanationTransition(async () => {
       setExplanation(null);
+      setExplanationTime(null);
+      const startTime = Date.now();
       const result = await explainOrder({ orderText: orderDescription });
+      const endTime = Date.now();
+      setExplanationTime((endTime - startTime) / 1000);
       setExplanation(result);
     });
   }
@@ -80,9 +86,14 @@ function CaseSearchForm() {
     }
     if (state.data) {
       setSummary(null);
+      setSummaryTime(null);
       setExplanation(null);
+      setExplanationTime(null);
       startSummaryTransition(async () => {
+        const startTime = Date.now();
         const caseSummary = await summarizeCase(state.data as CaseData);
+        const endTime = Date.now();
+        setSummaryTime((endTime - startTime) / 1000);
         setSummary(caseSummary);
       });
     }
@@ -135,9 +146,11 @@ function CaseSearchForm() {
             data={state.data} 
             summary={summary}
             isSummaryLoading={isSummaryLoading}
+            summaryTime={summaryTime}
             onExplainOrder={handleExplainOrder}
             explanation={explanation}
             isExplanationLoading={isExplanationLoading}
+            explanationTime={explanationTime}
         />
       )}
     </div>
