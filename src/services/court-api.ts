@@ -1,13 +1,15 @@
 
-/**
- * @file This file simulates a backend service that would scrape a court website.
- * In a real-world application, this is where you would put your web scraping
- * or API client logic (e.g., using Playwright, Selenium, or an official API).
- */
+'use server';
+import FirecrawlApp from 'firecrawl';
+import { z } from 'zod';
 
-import { format, addDays, getYear, setYear, parse } from 'date-fns';
+// Load environment variables
+import dotenv from 'dotenv';
+dotenv.config();
 
 export interface CaseOrder {
+  title: string;
+  type: 'order' | 'notice';
   date: string;
   description: string;
   pdfUrl: string;
@@ -17,12 +19,17 @@ export interface CaseData {
   caseType: string;
   caseNumber: string;
   filingYear: string;
+  caseId: string;
+  status: 'Pending' | 'Disposed';
+  court: string;
+  judge: string;
   parties: {
     petitioner: string;
     respondent: string;
   };
   filingDate: string;
   nextHearingDate: string;
+  lastUpdated: string;
   orders: CaseOrder[];
 }
 
@@ -32,117 +39,83 @@ interface FetchParams {
   filingYear: string;
 }
 
-const PETITIONERS = [
-  'M/S ACME Industries Ltd.',
-  'Shri Raj Kumar',
-  'Smt. Anita Devi',
-  'Future Enterprises Pvt. Ltd.',
-  'Phoenix Legal Services',
-];
+const courtCaseSchema = z.object({
+    caseType: z.string(),
+    caseNumber: z.string(),
+    filingYear: z.string(),
+    caseId: z.string(),
+    status: z.enum(['Pending', 'Disposed']),
+    court: z.string(),
+    judge: z.string(),
+    parties: z.object({
+        petitioner: z.string(),
+        respondent: z.string(),
+    }),
+    filingDate: z.string(),
+    nextHearingDate: z.string(),
+    lastUpdated: z.string(),
+    orders: z.array(z.object({
+        title: z.string(),
+        type: z.enum(['order', 'notice']),
+        date: z.string(),
+        description: z.string(),
+        pdfUrl: z.string(),
+    })),
+});
 
-const RESPONDENTS = [
-  'Union of India & ORS.',
-  'State of NCT of Delhi',
-  'Mahanagar Telephone Nigam Ltd.',
-  'The Oriental Insurance Co. Ltd.',
-  'Registrar of Companies',
-];
 
-/**
- * Simulates fetching case data from a court's website.
- * @param params The case details to search for.
- * @returns A promise that resolves with the case data.
- * @throws An error if the case is not found or if there's a simulated server error.
- */
 export async function fetchCaseFromCourtApi(params: FetchParams): Promise<CaseData> {
-  const { caseNumber, filingYear } = params;
-
-  // ===================================================================================
-  // HOW TO INTEGRATE A REAL DATA SOURCE
-  // ===================================================================================
-  // To connect this application to a real court data source (either via an API you
-  // have access to, or a web scraper you build), you would replace the simulation
-  // logic below with your actual data fetching code.
-  //
-  // 1. Make an API Call:
-  //    const response = await fetch(`https://your-court-api.com/cases?cn=${caseNumber}&cy=${filingYear}`);
-  //    if (!response.ok) {
-  //      throw new Error('Failed to fetch from API.');
-  //    }
-  //    const realData = await response.json();
-  //    return realData;
-  //
-  // 2. Or, Call Your Scraper:
-  //    If you build a scraper (e.g., as a separate serverless function), you would
-  //    call it from here.
-  //    const realData = await myScraperFunction({ caseNumber, filingYear });
-  //    return realData;
-  //
-  // The rest of the function below is for generating realistic MOCK DATA for the demo.
-  // You can safely remove it when you integrate your real data source.
-  // ===================================================================================
-
-  // --- Start of Simulation Logic ---
-
-  if (!/^\d+$/.test(caseNumber) || !/^\d{4}$/.test(filingYear)) {
-    throw new Error('Invalid input. Case number and year must be numeric.');
-  }
-  
-  // Use case number to create deterministic "randomness" for mock data
-  const numericCaseNumber = parseInt(caseNumber, 10);
-
-  // Simulate specific outcomes for demonstration
-  if (caseNumber === '999') {
-    throw new Error('Invalid case number or year. Please check the details and try again.');
-  }
+  const { caseNumber } = params;
 
   if (caseNumber === '000') {
-    throw new Error('The court website is currently unavailable. Please try again later.');
+    throw new Error('The court website appears to be down. Please try again later.');
   }
 
-  const baseDateStr = `15-Jan-${filingYear}`;
-  let filingDateObj;
-  try {
-     filingDateObj = parse(baseDateStr, 'dd-MMM-yyyy', new Date());
-     if (isNaN(filingDateObj.getTime())) {
-        filingDateObj = new Date(); // fallback to current date
-     }
-  } catch (e) {
-    filingDateObj = new Date(); // fallback
+  if (caseNumber === '999') {
+      throw new Error('Invalid Case Number. Please check the number and try again.');
   }
-
-  const petitionerIndex = numericCaseNumber % PETITIONERS.length;
-  const respondentIndex = (numericCaseNumber + 1) % RESPONDENTS.length;
-
-  const successfulCase: CaseData = {
-    caseType: params.caseType,
-    caseNumber: params.caseNumber,
-    filingYear: params.filingYear,
-    parties: {
-      petitioner: PETITIONERS[petitionerIndex],
-      respondent: RESPONDENTS[respondentIndex],
-    },
-    filingDate: format(filingDateObj, 'dd-MMM-yyyy'),
-    nextHearingDate: format(addDays(new Date(), numericCaseNumber % 60), 'dd-MMM-yyyy'),
-    orders: [
-      {
-        date: format(addDays(filingDateObj, (numericCaseNumber % 30) + 60), 'dd-MMM-yyyy'),
-        description: 'Hearing - Arguments heard, judgment reserved.',
-        pdfUrl: '/placeholder.pdf',
+  
+  // This is a simulation. In a real application, you would use a web
+  // scraping service or an API to fetch this data.
+  const mockData: CaseData = {
+      caseType: params.caseType,
+      caseNumber: params.caseNumber,
+      filingYear: params.filingYear,
+      caseId: `CRIMINAL/${params.caseNumber}/${params.filingYear}`,
+      status: 'Pending',
+      court: 'Delhi High Court',
+      judge: "Hon'ble Justice Rajesh Kumar",
+      parties: {
+          petitioner: 'Ram Kumar Sharma',
+          respondent: 'State of Delhi & Ors.',
       },
-      {
-        date: format(addDays(filingDateObj, (numericCaseNumber % 20) + 30), 'dd-MMM-yyyy'),
-        description: 'Interim Order - Application for discovery.',
-        pdfUrl: '/placeholder.pdf',
-      },
-      {
-        date: format(filingDateObj, 'dd-MMM-yyyy'),
-        description: 'Notice Issued - Reply to be filed.',
-        pdfUrl: '/placeholder.pdf',
-      },
-    ],
+      filingDate: '15-03-2024',
+      nextHearingDate: '05-08-2024',
+      lastUpdated: '25-07-2024',
+      orders: [
+          { 
+            title: 'Order on Application for Interim Relief',
+            type: 'order',
+            date: '20-07-2024', 
+            description: 'The court has considered the application for interim relief filed by the petitioner. After hearing both parties, the court grants interim relief as prayed for, subject to the petitioner furnishing an undertaking as per the terms specified in the order.', 
+            pdfUrl: '#' 
+          },
+          { 
+            title: 'Notice issued to Respondents',
+            type: 'notice',
+            date: '15-06-2024', 
+            description: 'Notice issued to all respondents to file their response within 4 weeks. The matter is listed for hearing on the next date.', 
+            pdfUrl: '#'
+          },
+          { 
+            title: 'Case Filed and Initial Orders',
+            type: 'order',
+            date: '15-03-2024', 
+            description: 'Petition filed and admitted. Issue notice to respondents. Registry to serve notice through all permissible modes including email and registered post.', 
+            pdfUrl: '#' 
+          },
+      ],
   };
 
-  return successfulCase;
-  // --- End of Simulation Logic ---
+  return Promise.resolve(mockData);
 }

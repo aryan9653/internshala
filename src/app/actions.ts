@@ -21,8 +21,8 @@ export async function fetchCaseData(
   prevState: ActionState,
   formData: FormData
 ): Promise<ActionState> {
-  // Artificial delay to simulate network latency
-  await new Promise((res) => setTimeout(res, 1500));
+  // Artificial delay to simulate network latency, can be removed
+  await new Promise((res) => setTimeout(res, 500));
 
   const validatedFields = schema.safeParse({
     caseType: formData.get('caseType'),

@@ -1,5 +1,5 @@
 
-import type { CaseData } from '@/app/actions';
+import type { CaseData, CaseOrder } from '@/app/actions';
 import {
   Card,
   CardContent,
@@ -7,20 +7,55 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
-import { Download, Users } from 'lucide-react';
-import { Badge } from './ui/badge';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { FileText, GanttChartSquare, Landmark, Scale, ShieldAlert, User, Users, CalendarDays, Case } from 'lucide-react';
 
 interface CaseDetailsProps {
   data: CaseData;
+}
+
+function DetailItem({ icon, label, value, valueBadgeVariant }: { icon: React.ElementType, label: string, value: string, valueBadgeVariant?: "default" | "secondary" | "destructive" | "outline" | null }) {
+    const Icon = icon;
+    return (
+        <div className="grid grid-cols-[auto,1fr] items-start gap-x-4">
+            <Icon className="h-5 w-5 text-muted-foreground mt-1" />
+            <div className="text-sm">
+                <p className="text-muted-foreground">{label}</p>
+                {valueBadgeVariant ? (
+                    <Badge variant={valueBadgeVariant} className="text-base font-semibold mt-1">{value}</Badge>
+                ) : (
+                    <p className="font-semibold">{value}</p>
+                )}
+            </div>
+        </div>
+    )
+}
+
+function OrderCard({ order }: { order: CaseOrder }) {
+    const isNotice = order.type === 'notice';
+    return (
+        <div className="grid grid-cols-[auto,1fr] gap-x-4 animate-in fade-in-50">
+             <div className="flex flex-col items-center">
+                <div className={`flex items-center justify-center h-10 w-10 rounded-full ${isNotice ? 'bg-blue-100' : 'bg-green-100'}`}>
+                    {isNotice ? (
+                        <ShieldAlert className="h-5 w-5 text-blue-600" />
+                    ) : (
+                        <FileText className="h-5 w-5 text-green-600" />
+                    )}
+                </div>
+                <div className="flex-grow border-l-2 border-dashed border-border my-2"></div>
+            </div>
+            <div>
+                <div className="flex items-center gap-4">
+                    <h3 className="font-semibold">{order.title}</h3>
+                    <Badge variant={isNotice ? 'default' : 'secondary'} className="capitalize">{order.type}</Badge>
+                </div>
+                <p className="text-sm text-muted-foreground mt-1 mb-2">{order.date}</p>
+                <p className="text-sm text-muted-foreground">{order.description}</p>
+            </div>
+        </div>
+    )
 }
 
 export function CaseDetails({ data }: CaseDetailsProps) {
@@ -28,77 +63,35 @@ export function CaseDetails({ data }: CaseDetailsProps) {
     <div className="grid animate-in fade-in-50 gap-8">
       <Card>
         <CardHeader>
-          <CardTitle>Case Summary</CardTitle>
-          <CardDescription>
-            {data.caseType} - {data.caseNumber}/{data.filingYear}
-          </CardDescription>
+          <div className="flex justify-between items-start">
+            <div>
+                <CardTitle>Case Details</CardTitle>
+                <CardDescription className="mt-1">
+                    Last Updated: {data.lastUpdated}
+                </CardDescription>
+            </div>
+            <Badge variant={data.status === 'Pending' ? 'destructive' : 'secondary'} className="capitalize">{data.status}</Badge>
+          </div>
         </CardHeader>
-        <CardContent className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <h3 className="font-semibold flex items-center gap-2">
-              <Users className="h-5 w-5 text-primary" />
-              Parties
-            </h3>
-            <div className="pl-7 space-y-2 text-sm">
-              <p>
-                <span className="font-medium text-muted-foreground">Petitioner: </span>
-                {data.parties.petitioner}
-              </p>
-              <p>
-                <span className="font-medium text-muted-foreground">Respondent: </span>
-                {data.parties.respondent}
-              </p>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <h3 className="font-semibold">Key Dates</h3>
-            <div className="space-y-2 text-sm">
-              <div>
-                <span className="font-medium text-muted-foreground">Filing Date: </span>
-                <Badge variant="secondary">{data.filingDate}</Badge>
-              </div>
-              <div>
-                <span className="font-medium text-muted-foreground">Next Hearing: </span>
-                <Badge>{data.nextHearingDate}</Badge>
-              </div>
-            </div>
-          </div>
+        <CardContent className="grid md:grid-cols-2 gap-x-6 gap-y-8">
+            <DetailItem icon={GanttChartSquare} label="Case Number" value={data.caseId} />
+            <DetailItem icon={Landmark} label="Court" value={data.court} />
+            <DetailItem icon={CalendarDays} label="Filing Date" value={data.filingDate} />
+            <DetailItem icon={Scale} label="Judge" value={data.judge} />
+            <DetailItem icon={User} label="Petitioner" value={data.parties.petitioner} />
+            <DetailItem icon={Users} label="Respondent" value={data.parties.respondent} />
+            <DetailItem icon={CalendarDays} label="Next Hearing" value={data.nextHearingDate} valueBadgeVariant="default" />
         </CardContent>
       </Card>
       
       <Card>
         <CardHeader>
-          <CardTitle>Orders & Judgments</CardTitle>
-          <CardDescription>
-            Most recent orders are listed first.
-          </CardDescription>
+          <CardTitle>Latest Orders & Judgments</CardTitle>
         </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Date</TableHead>
-                <TableHead>Description</TableHead>
-                <TableHead className="text-right">Action</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {data.orders.map((order, index) => (
-                <TableRow key={index}>
-                  <TableCell className="font-medium">{order.date}</TableCell>
-                  <TableCell>{order.description}</TableCell>
-                  <TableCell className="text-right">
-                    <Button asChild variant="ghost" size="sm">
-                      <a href={order.pdfUrl} download>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download
-                      </a>
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <CardContent className="space-y-6">
+          {data.orders.map((order, index) => (
+            <OrderCard key={index} order={order} />
+          ))}
         </CardContent>
       </Card>
     </div>
