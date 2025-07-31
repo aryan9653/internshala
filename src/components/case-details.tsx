@@ -52,14 +52,14 @@ export function CaseDetails({ data }: CaseDetailsProps) {
           <div className="space-y-4">
             <h3 className="font-semibold">Key Dates</h3>
             <div className="space-y-2 text-sm">
-              <p>
+              <div>
                 <span className="font-medium text-muted-foreground">Filing Date: </span>
                 <Badge variant="secondary">{data.filingDate}</Badge>
-              </p>
-              <p>
+              </div>
+              <div>
                 <span className="font-medium text-muted-foreground">Next Hearing: </span>
                 <Badge>{data.nextHearingDate}</Badge>
-              </p>
+              </div>
             </div>
           </div>
         </CardContent>
