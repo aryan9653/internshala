@@ -8,26 +8,17 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { FileText, GanttChartSquare, Landmark, Scale, ShieldAlert, User, Users, CalendarDays, Case } from 'lucide-react';
+import { FileText, ShieldAlert } from 'lucide-react';
 
 interface CaseDetailsProps {
   data: CaseData;
 }
 
-function DetailItem({ icon, label, value, valueBadgeVariant }: { icon: React.ElementType, label: string, value: string, valueBadgeVariant?: "default" | "secondary" | "destructive" | "outline" | null }) {
-    const Icon = icon;
+function DetailRow({ label, value }: { label: string, value: React.ReactNode }) {
     return (
-        <div className="grid grid-cols-[auto,1fr] items-start gap-x-4">
-            <Icon className="h-5 w-5 text-muted-foreground mt-1" />
-            <div className="text-sm">
-                <p className="text-muted-foreground">{label}</p>
-                {valueBadgeVariant ? (
-                    <Badge variant={valueBadgeVariant} className="text-base font-semibold mt-1">{value}</Badge>
-                ) : (
-                    <p className="font-semibold">{value}</p>
-                )}
-            </div>
+        <div className="grid grid-cols-3 gap-2 py-2 border-b border-dashed">
+            <p className="text-sm font-medium text-muted-foreground">{label}</p>
+            <div className="col-span-2 text-sm font-semibold">{value}</div>
         </div>
     )
 }
@@ -63,24 +54,34 @@ export function CaseDetails({ data }: CaseDetailsProps) {
     <div className="grid animate-in fade-in-50 gap-8">
       <Card>
         <CardHeader>
-          <div className="flex justify-between items-start">
-            <div>
-                <CardTitle>Case Details</CardTitle>
-                <CardDescription className="mt-1">
-                    Last Updated: {data.lastUpdated}
-                </CardDescription>
-            </div>
-            <Badge variant={data.status === 'Pending' ? 'destructive' : 'secondary'} className="capitalize">{data.status}</Badge>
-          </div>
+            <CardTitle>Case History</CardTitle>
+            <CardDescription className="mt-1">
+                Last Updated: {data.lastUpdated}
+            </CardDescription>
         </CardHeader>
-        <CardContent className="grid md:grid-cols-2 gap-x-6 gap-y-8">
-            <DetailItem icon={GanttChartSquare} label="Case Number" value={data.caseId} />
-            <DetailItem icon={Landmark} label="Court" value={data.court} />
-            <DetailItem icon={CalendarDays} label="Filing Date" value={data.filingDate} />
-            <DetailItem icon={Scale} label="Judge" value={data.judge} />
-            <DetailItem icon={User} label="Petitioner" value={data.parties.petitioner} />
-            <DetailItem icon={Users} label="Respondent" value={data.parties.respondent} />
-            <DetailItem icon={CalendarDays} label="Next Hearing" value={data.nextHearingDate} valueBadgeVariant="default" />
+        <CardContent>
+            <DetailRow label="Case No" value={data.caseId} />
+            <DetailRow label="CNR No." value={data.cnrNumber} />
+            <DetailRow 
+                label="Status" 
+                value={<Badge variant={data.status === 'Pending' ? 'destructive' : 'secondary'} className="capitalize">{data.status}</Badge>} 
+            />
+            <DetailRow label="Date of Registration" value={data.registrationDate} />
+            <DetailRow label="Date of Filing" value={data.filingDate} />
+            <DetailRow label="Filing Advocate" value={data.filingAdvocate} />
+            <DetailRow 
+                label="Parties" 
+                value={
+                    <p>
+                        {data.parties.petitioner}
+                        <span className="font-normal text-muted-foreground mx-2">Vs.</span>
+                        {data.parties.respondent}
+                    </p>
+                }
+            />
+            <DetailRow label="Dealing Assistant" value={data.dealingAssistant} />
+            <DetailRow label="Subject" value={<p className="whitespace-normal">{data.subject}</p>} />
+            <DetailRow label="Next Hearing" value={<span className="font-bold text-primary">{data.nextHearingDate}</span>} />
         </CardContent>
       </Card>
       

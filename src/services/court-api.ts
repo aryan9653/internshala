@@ -20,9 +20,14 @@ export interface CaseData {
   caseNumber: string;
   filingYear: string;
   caseId: string;
+  cnrNumber: string;
   status: 'Pending' | 'Disposed';
+  registrationDate: string;
   court: string;
   judge: string;
+  subject: string;
+  filingAdvocate: string;
+  dealingAssistant: string;
   parties: {
     petitioner: string;
     respondent: string;
@@ -46,9 +51,14 @@ const courtCaseSchema = z.object({
     caseNumber: z.string().describe('The unique number assigned to the case for the year.'),
     filingYear: z.string().describe('The year the case was filed.'),
     caseId: z.string().describe("The full case ID, usually a combination of type, number, and year."),
+    cnrNumber: z.string().describe("The CNR number of the case."),
     status: z.enum(['Pending', 'Disposed']).describe('The current status of the case.'),
+    registrationDate: z.string().describe("The date the case was registered."),
     court: z.string().describe('The name of the court, e.g., "Delhi High Court".'),
     judge: z.string().describe("The name of the judge or bench presiding over the case."),
+    subject: z.string().describe("The subject or category of the case."),
+    filingAdvocate: z.string().describe("The name of the advocate who filed the case."),
+    dealingAssistant: z.string().describe("The name of the dealing assistant for the case."),
     parties: z.object({
         petitioner: z.string().describe("The name of the petitioner."),
         respondent: z.string().describe("The name of the respondent."),
@@ -137,9 +147,14 @@ export async function fetchCaseFromCourtApi(params: FetchParams): Promise<CaseDa
       caseNumber: params.caseNumber,
       filingYear: params.filingYear,
       caseId: `${params.caseType.replace(/\./g, '')}/${params.caseNumber}/${params.filingYear}`,
+      cnrNumber: `DLHC01${Math.floor(Math.random() * 1000000)}2024`,
       status: caseStatus,
+      registrationDate: '01-04-2024',
       court: 'Delhi High Court',
       judge: "Hon'ble Justice Rajesh Kumar",
+      subject: "TRADE MARK SEC 91 APPEAL TO THE APPELLATE BOARD (NOW HC)",
+      filingAdvocate: "SHAILEN BHATIA",
+      dealingAssistant: "ORG-IPD1",
       parties: {
           petitioner: 'Ram Kumar Sharma',
           respondent: 'State of Delhi & Ors.',
