@@ -2,9 +2,11 @@
 'use client';
 
 import { useFormStatus } from 'react-dom';
-import { useActionState, useEffect, useState } from 'react';
+import { useActionState, useEffect, useState, useTransition } from 'react';
 import dynamic from 'next/dynamic';
-import { fetchCaseData, type ActionState } from '@/app/actions';
+import { fetchCaseData, type ActionState, type CaseData } from '@/app/actions';
+import { summarizeCase } from '@/ai/flows/summarize-case-flow';
+import { explainOrder, type ExplainOrderOutput } from '@/ai/flows/explain-order-flow';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -51,6 +53,21 @@ function SubmitButton() {
 function CaseSearchForm() {
   const [state, formAction] = useActionState(fetchCaseData, initialState);
   const { toast } = useToast();
+  
+  const [isSummaryLoading, startSummaryTransition] = useTransition();
+  const [summary, setSummary] = useState<string | null>(null);
+
+  const [explanation, setExplanation] = useState<ExplainOrderOutput | null>(null);
+  const [isExplanationLoading, startExplanationTransition] = useTransition();
+
+
+  const handleExplainOrder = (orderDescription: string) => {
+    startExplanationTransition(async () => {
+      setExplanation(null);
+      const result = await explainOrder({ orderText: orderDescription });
+      setExplanation(result);
+    });
+  }
 
   useEffect(() => {
     if (state.error) {
@@ -59,8 +76,17 @@ function CaseSearchForm() {
         title: 'Search Failed',
         description: state.error,
       });
+      setSummary(null);
     }
-  }, [state.error, toast]);
+    if (state.data) {
+      setSummary(null);
+      setExplanation(null);
+      startSummaryTransition(async () => {
+        const caseSummary = await summarizeCase(state.data as CaseData);
+        setSummary(caseSummary);
+      });
+    }
+  }, [state.error, state.data, toast]);
 
   return (
     <div className="space-y-8">
@@ -104,7 +130,16 @@ function CaseSearchForm() {
         </form>
       </Card>
 
-      {state.data && <CaseDetails data={state.data} />}
+      {state.data && (
+        <CaseDetails 
+            data={state.data} 
+            summary={summary}
+            isSummaryLoading={isSummaryLoading}
+            onExplainOrder={handleExplainOrder}
+            explanation={explanation}
+            isExplanationLoading={isExplanationLoading}
+        />
+      )}
     </div>
   );
 }
