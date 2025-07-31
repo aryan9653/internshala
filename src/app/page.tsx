@@ -97,11 +97,6 @@ function CaseSearchForm() {
                 <Input id="filingYear" name="filingYear" placeholder="e.g., 2023" required maxLength={4} />
               </div>
             </div>
-            <div>
-              <p className="text-sm text-muted-foreground">
-                Hint: Try case number '123' for success, '999' for an invalid number error, or '000' for a site down error.
-              </p>
-            </div>
           </CardContent>
           <CardFooter>
             <SubmitButton />
