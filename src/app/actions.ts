@@ -1,25 +1,9 @@
 'use server';
 
 import { z } from 'zod';
+import { fetchCaseFromCourtApi, type CaseData } from '@/services/court-api';
 
-export interface CaseOrder {
-  date: string;
-  description: string;
-  pdfUrl: string;
-}
-
-export interface CaseData {
-  caseType: string;
-  caseNumber: string;
-  filingYear: string;
-  parties: {
-    petitioner: string;
-    respondent: string;
-  };
-  filingDate: string;
-  nextHearingDate: string;
-  orders: CaseOrder[];
-}
+export type { CaseData, CaseOrder } from '@/services/court-api';
 
 export interface ActionState {
   data: CaseData | null;
@@ -51,59 +35,14 @@ export async function fetchCaseData(
       error: 'Invalid form data. Please ensure all fields are correctly filled.',
     };
   }
-
-  const { caseNumber } = validatedFields.data;
-
-  // Simulate different outcomes based on case number
-  if (caseNumber === '999') {
-    return {
-      data: null,
-      error: 'Invalid case number or year. Please check the details and try again.',
-    };
-  }
-
-  if (caseNumber === '000') {
-    return {
-      data: null,
-      error: 'The court website is currently unavailable. Please try again later.',
-    };
-  }
   
-  if (caseNumber === '123') {
-    const mockData: CaseData = {
-      caseType: validatedFields.data.caseType,
-      caseNumber: validatedFields.data.caseNumber,
-      filingYear: validatedFields.data.filingYear,
-      parties: {
-        petitioner: 'M/S ACME Industries Ltd.',
-        respondent: 'Union of India & ORS.',
-      },
-      filingDate: '15-Mar-2023',
-      nextHearingDate: '28-Aug-2024',
-      orders: [
-        {
-          date: '20-May-2024',
-          description: 'Judgement - Final order passed.',
-          pdfUrl: '/placeholder.pdf',
-        },
-        {
-          date: '10-Apr-2024',
-          description: 'Hearing - Arguments heard.',
-          pdfUrl: '/placeholder.pdf',
-        },
-        {
-          date: '05-Feb-2024',
-          description: 'Interim Order - Application for stay.',
-          pdfUrl: '/placeholder.pdf',
-        },
-      ],
-    };
-
-    return { data: mockData, error: null };
+  try {
+    const data = await fetchCaseFromCourtApi(validatedFields.data);
+    return { data, error: null };
+  } catch (error) {
+    if (error instanceof Error) {
+      return { data: null, error: error.message };
+    }
+    return { data: null, error: 'An unknown error occurred.' };
   }
-
-  return {
-    data: null,
-    error: 'Case not found. Please try a different case number (e.g., 123).',
-  };
 }
