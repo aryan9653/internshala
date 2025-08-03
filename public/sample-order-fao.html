@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Court Order - FAO</title>
+    <title>High Court of Delhi - Case Order</title>
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
@@ -14,177 +14,172 @@
             padding: 2rem;
             position: relative;
         }
-        body::before {
-            content: '';
+        .watermark {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>");
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 300px;
-            opacity: 0.1;
-            transform: rotate(-30deg);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            opacity: 0.08;
             z-index: -1;
+            pointer-events: none;
+            width: 80%;
+            height: 80%;
         }
         .container {
             max-width: 800px;
             margin: auto;
-            background: #fff;
-            padding: 2rem;
             border: 1px solid #ccc;
+            padding: 2rem;
+            background: #fff;
         }
         .header {
             text-align: center;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #000;
             padding-bottom: 1rem;
             margin-bottom: 2rem;
         }
-        .header img {
-            width: 50px;
+        .header .logo {
+            width: 80px;
+            height: 80px;
             margin-bottom: 0.5rem;
         }
         .header h1 {
             margin: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem;
         }
         .header p {
-            margin: 0.2rem 0;
+            margin: 0;
             font-size: 0.9rem;
         }
         .case-details, .orders, .explanation {
             margin-bottom: 2rem;
         }
-        h2 {
-            border-bottom: 1px solid #ccc;
+        .case-details h2, .orders h2, .explanation h2 {
+            border-bottom: 1px solid #999;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0.5rem 1rem;
         }
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        th {
-            background-color: #f8f8f8;
+        .details-grid dt {
             font-weight: bold;
-            width: 30%;
         }
         .order-item {
-            border-left: 3px solid #666;
-            padding-left: 1.5rem;
             margin-bottom: 1.5rem;
+            border-left: 3px solid #eee;
+            padding-left: 1rem;
         }
-        .order-item strong {
+        .order-item h3 {
+            margin-top: 0;
             font-size: 1.1rem;
-        }
-        .order-item .meta {
-            font-size: 0.9rem;
-            color: #555;
-            margin: 0.25rem 0 0.5rem;
-        }
-        .purpose {
-            background-color: #f0f8ff;
-            border: 1px solid #add8e6;
-            padding: 1rem;
-            margin-top: 1rem;
+            background-color: #f2f2f2;
+            padding: 0.5rem;
             border-radius: 4px;
         }
+        .order-item code {
+            font-size: 0.85rem;
+            color: #555;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .purpose {
+            background-color: #eaf2ff;
+            border: 1px solid #b3c8e6;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
         .purpose strong {
-            color: #005a9c;
+            color: #003366;
         }
         .footer {
-            text-align: center;
             margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid #ccc;
+            text-align: center;
             font-size: 0.8rem;
             color: #777;
+            border-top: 1px solid #ccc;
+            padding-top: 1rem;
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <header class="header">
-            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>" alt="Emblem of India">
-            <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
-            <p>(APPELLATE JURISDICTION)</p>
-            <p>Sher Shah Road, New Delhi - 110503 | Website: www.delhihighcourt.nic.in</p>
-        </header>
-
-        <section class="case-details">
-            <h2>Case Details</h2>
-            <table>
-                <tr>
-                    <th>Case Type</th>
-                    <td>FAO - First Appeal from Order</td>
-                </tr>
-                <tr>
-                    <th>Case Number</th>
-                    <td>FAO 123/2023</td>
-                </tr>
-                <tr>
-                    <th>Parties</th>
-                    <td><strong>Creative Designs Inc.</strong> (Appellant) vs. <strong>Innovate Tech Solutions</strong> (Respondent)</td>
-                </tr>
-                 <tr>
-                    <th>Advocate for Appellant</th>
-                    <td>Sunita Reddy</td>
-                </tr>
-                <tr>
-                    <th>Advocate for Respondent</th>
-                    <td>Anil Mehta</td>
-                </tr>
-                <tr>
-                    <th>Subject</th>
-                    <td>Appeal against an ad-interim injunction order passed by the trial court in a copyright infringement suit.</td>
-                </tr>
-            </table>
-        </section>
-
-        <section class="explanation">
-            <h2>Understanding a First Appeal from Order (FAO)</h2>
-            <p>A <strong>First Appeal from Order (FAO)</strong> is an appeal filed against an 'order' of a lower court, as distinguished from a 'decree' (which is a final judgment). Certain specific orders passed during the course of a suit can be appealed immediately, without waiting for the final outcome of the case. A very common example is an appeal against an order granting or refusing a temporary injunction. This allows a party who is negatively affected by an interim order to seek immediate relief from a higher court.</p>
-        </section>
-
-        <section class="orders">
-            <h2>Orders of the Court</h2>
-            
-            <div class="order-item">
-                <strong>Stay on lower court order</strong>
-                <p class="meta">Type: order | Date: 25-07-2024</p>
-                <p>The operation of the impugned order of the trial court dated [date] is stayed till the next date of hearing. The appellant shall, however, maintain accounts of the sales of the disputed product and file them in court.</p>
-                <div class="purpose">
-                    <p><strong>Purpose of the Order:</strong> This is a significant interim victory for the appellant. The High Court has temporarily paused ('stayed') the effect of the lower court's injunction order. This means the appellant (Creative Designs Inc.) can likely resume its activities that were stopped by the trial court. However, the condition to 'maintain accounts' ensures that if the appellant ultimately loses the appeal, the financial benefit they gained during the stay period can be calculated and potentially compensated to the respondent.</p>
-                </div>
-            </div>
-
-            <div class="order-item">
-                <strong>Notice of appeal issued</strong>
-                <p class="meta">Type: notice | Date: 20-06-2024</p>
-                <p>Issue notice of the appeal to the respondent, returnable on the next date. The appellant is directed to provide a copy of the appeal paper book to the respondent's counsel within one week.</p>
-                 <div class="purpose">
-                    <p><strong>Purpose of the Order:</strong> This is the first step in the appeal, where the High Court formally informs the respondent (the party who won in the lower court) that an appeal has been filed against the order. This ensures the respondent is aware of the proceedings and has an opportunity to appear and defend the lower court's order. It upholds the principle of 'audi alteram partem' (hear the other side).</p>
-                </div>
-            </div>
-
-        </section>
-
-        <footer class="footer">
-            <p>This is a computer-generated document for informational purposes only. The content should be verified with certified copies obtained from the court registry.</p>
-            <p>&copy; 2024 High Court of Delhi. All rights reserved.</p>
-        </footer>
+    <div class="watermark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor">
+            <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="currentColor">HIGH COURT OF DELHI</text>
+            <text x="100" y="175" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="currentColor">HIGH COURT OF DELHI</text>
+            <path d="M100 50 L100 150 M50 100 L150 100 M64.6 64.6 L135.4 135.4 M64.6 135.4 L135.4 64.6" stroke="currentColor" stroke-width="4"/>
+            <circle cx="100" cy="100" r="25" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="100" cy="100" r="4" fill="currentColor"/>
+        </svg>
     </div>
 
+    <div class="container">
+        <div class="header">
+             <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="currentColor">
+                <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="4"/>
+                <text x="100" y="40" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="currentColor">HIGH COURT OF DELHI</text>
+                <text x="100" y="175" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="currentColor">HIGH COURT OF DELHI</text>
+                <path d="M100 50 L100 150 M50 100 L150 100 M64.6 64.6 L135.4 135.4 M64.6 135.4 L135.4 64.4" stroke="currentColor" stroke-width="8"/>
+                <circle cx="100" cy="100" r="28" fill="none" stroke="currentColor" stroke-width="4"/>
+                <circle cx="100" cy="100" r="4" fill="currentColor"/>
+            </svg>
+            <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
+            <p>(FIRST APPEAL FROM ORDER)</p>
+            <p>Website: www.delhihighcourt.nic.in</p>
+        </div>
+
+        <div class="explanation">
+            <h2>Understanding First Appeals From Order (FAO)</h2>
+            <p>
+                A First Appeal from Order (FAO) is an appeal filed against an 'interim' or 'interlocutory' order passed by a lower court during a pending suit. Unlike an appeal against a final judgment, an FAO challenges a specific procedural or temporary decision made by the judge before the main case is decided. Common examples include orders granting or refusing a temporary injunction.
+            </p>
+        </div>
+
+        <div class="case-details">
+            <h2>Case Details</h2>
+            <dl class="details-grid">
+                <dt>Case Type:</dt><dd>FAO</dd>
+                <dt>Case Number:</dt><dd>123 of 2023</dd>
+                <dt>Parties:</dt><dd>Creative Designs Inc. (Appellant) vs. Innovate Tech Solutions (Respondent)</dd>
+                <dt>Advocate for Appellant:</dt><dd>Sunita Reddy</dd>
+                <dt>Advocate for Respondent:</dt><dd>Amit Varma</dd>
+                <dt>Subject:</dt><dd>Appeal against the trial court's order refusing to grant an ad-interim injunction.</dd>
+                <dt>Next Hearing:</dt><dd>05-08-2024</dd>
+                <dt>Status:</dt><dd>Pending</dd>
+            </dl>
+        </div>
+
+        <div class="orders">
+            <h2>Orders of the Court</h2>
+
+            <div class="order-item">
+                <h3>Stay on lower court order</h3>
+                <code>Order Date: 25-07-2024 | Type: order</code>
+                <p>The operation of the impugned order dated [Trial Court Order Date] of the trial court is stayed till the next date of hearing. The respondent is restrained from creating any third-party rights in the suit property until further orders.</p>
+                <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> The High Court has temporarily paused the effect of the lower court's decision. This is a significant interim victory for the appellant, as it prevents the opposing party (respondent) from taking any action based on the lower court's order until the High Court can fully hear the appeal.</p>
+                </div>
+            </div>
+
+            <div class="order-item">
+                <h3>Notice of appeal</h3>
+                <code>Order Date: 20-06-2024 | Type: notice</code>
+                <p>Issue notice of the appeal to the respondent, returnable on the next date of hearing. The appellant is directed to provide a complete set of the appeal paper book to the respondent's counsel within one week.</p>
+                <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> This is the initial step where the High Court formally informs the respondent that an appeal has been filed against them. It gives the respondent an opportunity to appear and present their side of the story before the court makes a final decision on the appeal.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>This is a computer-generated copy for informational purposes only. It does not constitute a certified copy of the court's order. For a certified copy, please apply to the court registry.</p>
+        </div>
+    </div>
 </body>
 </html>
 
