@@ -2,11 +2,9 @@
 'use client';
 
 import { useFormStatus } from 'react-dom';
-import { useActionState, useEffect, useState, useTransition } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { fetchCaseData, type ActionState, type CaseData } from '@/app/actions';
-import { summarizeCase } from '@/ai/flows/summarize-case-flow';
-import { explainOrder, type ExplainOrderOutput } from '@/ai/flows/explain-order-flow';
+import { fetchCaseData, type ActionState } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -53,27 +51,6 @@ function SubmitButton() {
 function CaseSearchForm() {
   const [state, formAction] = useActionState(fetchCaseData, initialState);
   const { toast } = useToast();
-  
-  const [isSummaryLoading, startSummaryTransition] = useTransition();
-  const [summary, setSummary] = useState<string | null>(null);
-  const [summaryTime, setSummaryTime] = useState<number | null>(null);
-
-  const [explanation, setExplanation] = useState<ExplainOrderOutput | null>(null);
-  const [isExplanationLoading, startExplanationTransition] = useTransition();
-  const [explanationTime, setExplanationTime] = useState<number | null>(null);
-
-
-  const handleExplainOrder = (orderDescription: string) => {
-    startExplanationTransition(async () => {
-      setExplanation(null);
-      setExplanationTime(null);
-      const startTime = Date.now();
-      const result = await explainOrder({ orderText: orderDescription });
-      const endTime = Date.now();
-      setExplanationTime((endTime - startTime) / 1000);
-      setExplanation(result);
-    });
-  }
 
   useEffect(() => {
     if (state.error) {
@@ -82,22 +59,8 @@ function CaseSearchForm() {
         title: 'Search Failed',
         description: state.error,
       });
-      setSummary(null);
     }
-    if (state.data) {
-      setSummary(null);
-      setSummaryTime(null);
-      setExplanation(null);
-      setExplanationTime(null);
-      startSummaryTransition(async () => {
-        const startTime = Date.now();
-        const caseSummary = await summarizeCase(state.data as CaseData);
-        const endTime = Date.now();
-        setSummaryTime((endTime - startTime) / 1000);
-        setSummary(caseSummary);
-      });
-    }
-  }, [state.error, state.data, toast]);
+  }, [state.error, toast]);
 
   return (
     <div className="space-y-8">
@@ -143,14 +106,7 @@ function CaseSearchForm() {
 
       {state.data && (
         <CaseDetails 
-            data={state.data} 
-            summary={summary}
-            isSummaryLoading={isSummaryLoading}
-            summaryTime={summaryTime}
-            onExplainOrder={handleExplainOrder}
-            explanation={explanation}
-            isExplanationLoading={isExplanationLoading}
-            explanationTime={explanationTime}
+            data={state.data}
         />
       )}
     </div>

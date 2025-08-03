@@ -1,6 +1,5 @@
 
 import type { CaseData, CaseOrder } from '@/app/actions';
-import { type ExplainOrderOutput } from '@/ai/flows/explain-order-flow';
 import {
   Card,
   CardContent,
@@ -9,20 +8,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { FileText, ShieldAlert, Sparkles, Wand2, Bot, Loader2, Clock } from 'lucide-react';
 
 interface CaseDetailsProps {
   data: CaseData;
-  summary: string | null;
-  isSummaryLoading: boolean;
-  summaryTime: number | null;
-  explanation: ExplainOrderOutput | null;
-  isExplanationLoading: boolean;
-  explanationTime: number | null;
-  onExplainOrder: (orderDescription: string) => void;
 }
 
 function DetailRow({ label, value }: { label: string, value: React.ReactNode }) {
@@ -35,11 +25,9 @@ function DetailRow({ label, value }: { label: string, value: React.ReactNode }) 
 }
 
 function OrderCard({ 
-    order, 
-    onExplainClick 
+    order
 }: { 
-    order: CaseOrder,
-    onExplainClick: () => void,
+    order: CaseOrder
 }) {
     const isNotice = order.type === 'notice';
     return (
@@ -61,63 +49,16 @@ function OrderCard({
                 </div>
                 <p className="text-sm text-muted-foreground mt-1 mb-2">{order.date}</p>
                 <p className="text-sm text-muted-foreground mb-3">{order.description}</p>
-                <Button size="sm" variant="outline" onClick={onExplainClick}>
-                    <Wand2 className="mr-2 h-4 w-4" />
-                    Explain this Order
-                </Button>
             </div>
         </div>
     )
 }
 
 export function CaseDetails({ 
-    data, 
-    summary, 
-    isSummaryLoading,
-    summaryTime,
-    explanation, 
-    isExplanationLoading,
-    explanationTime,
-    onExplainOrder 
+    data
 }: CaseDetailsProps) {
   return (
     <div className="grid animate-in fade-in-50 gap-8">
-        {isSummaryLoading && (
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Sparkles className="text-primary" />
-                        AI Summary
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-4 w-5/6" />
-                    <Skeleton className="h-4 w-full" />
-                </CardContent>
-            </Card>
-        )}
-        {summary && (
-             <Card className="bg-gradient-to-br from-primary/10 to-background">
-                <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                        <span className="flex items-center gap-2">
-                            <Sparkles className="text-primary" />
-                            AI-Generated Summary
-                        </span>
-                        {summaryTime && (
-                            <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                                <Clock className="h-3 w-3" />
-                                {summaryTime.toFixed(2)}s
-                            </span>
-                        )}
-                    </CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-sm text-foreground/80 whitespace-pre-wrap">{summary}</p>
-                </CardContent>
-            </Card>
-        )}
       <Card>
         <CardHeader>
             <CardTitle>Case History</CardTitle>
@@ -154,38 +95,11 @@ export function CaseDetails({
       <Card>
         <CardHeader>
           <CardTitle>Latest Orders & Judgments</CardTitle>
-          <CardDescription>Click "Explain this Order" for an AI-powered summary.</CardDescription>
+          <CardDescription>A log of recent activity in the case.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-            {isExplanationLoading && (
-                <div className="flex items-center gap-2 text-muted-foreground">
-                    <Loader2 className="animate-spin h-5 w-5" />
-                    <span>Analyzing document...</span>
-                </div>
-            )}
-            {explanation && (
-                <Alert>
-                    <Bot className="h-4 w-4" />
-                    <AlertTitle className="flex items-center justify-between">
-                        <span>AI Explanation</span>
-                        {explanationTime && (
-                           <span className="flex items-center gap-1 text-xs text-muted-foreground font-normal">
-                                <Clock className="h-3 w-3" />
-                                {explanationTime.toFixed(2)}s
-                            </span>
-                        )}
-                    </AlertTitle>
-                    <AlertDescription>
-                        <p className="font-semibold mb-2">{explanation.summary}</p>
-                        <ul className="list-disc pl-5 space-y-1">
-                            {explanation.keyPoints.map((point, i) => <li key={i}>{point}</li>)}
-                        </ul>
-                    </AlertDescription>
-                </Alert>
-            )}
-
           {data.orders.map((order, index) => (
-            <OrderCard key={index} order={order} onExplainClick={() => onExplainOrder(order.description)} />
+            <OrderCard key={index} order={order} />
           ))}
         </CardContent>
       </Card>
