@@ -3,124 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRL.A/101/2023 - Order</title>
+    <title>Case Order - CRL.A 123/2023</title>
     <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 2rem;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 2.5rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #333;
-            padding-bottom: 1rem;
-        }
-        .header .emblem {
-            width: 60px;
-            height: auto;
-            margin-bottom: 0.5rem;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .header p {
-            margin: 0.2rem 0;
-            font-size: 0.9rem;
-        }
-        .section-title {
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        .case-details-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 0.5rem 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .case-details-grid dt {
-            font-weight: bold;
-            color: #444;
-        }
-        .orders-list .order-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #eee;
-        }
-        .order-meta {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-        .order-description {
-            text-align: justify;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid #ccc;
-            font-size: 0.8rem;
-            color: #777;
-        }
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 2rem; }
+        .header img { width: 50px; vertical-align: middle; }
+        .header h1 { margin: 0; font-size: 1.8rem; }
+        .header p { margin: 0.2rem 0; font-size: 0.9rem; }
+        .case-details, .orders { margin-bottom: 2rem; }
+        h2 { border-bottom: 1px solid #999; padding-bottom: 0.5rem; margin-top: 2rem; font-size: 1.4rem; }
+        .detail-grid { display: grid; grid-template-columns: 180px 1fr; gap: 0.5rem 1rem; }
+        .detail-grid dt { font-weight: bold; }
+        .order-item { border-left: 3px solid #ddd; padding-left: 1rem; margin-bottom: 1.5rem; }
+        .order-meta { font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .order-purpose { background-color: #f4f4f4; border-left: 3px solid #999; padding: 0.8rem; margin-top: 0.5rem; font-style: italic; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDh6bS0xLTVoMlY4aC0yem0wIDRoMlYxMWgtMnoiLz48L3N2Zz4=" alt="Emblem of India" class="emblem" />
+        <header class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India">
             <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
-            <p>Sher Shah Road, New Delhi-110503</p>
-            <p>Website: www.delhihighcourt.nic.in</p>
-        </div>
+            <p>(CRIMINAL APPELLATE JURISDICTION)</p>
+            <p><a href="http://delhihighcourt.nic.in">delhihighcourt.nic.in</a></p>
+        </header>
 
-        <div class="section-title">Case Details: CRL.A/101/2023</div>
-        <dl class="case-details-grid">
-            <dt>Case Type:</dt> <dd>CRL.A - Criminal Appeal</dd>
-            <dt>Case Number:</dt> <dd>101/2023</dd>
-            <dt>Parties:</dt> <dd>Arjun Kumar (Appellant) vs. State (NCT of Delhi) (Respondent)</dd>
-            <dt>Subject:</dt> <dd>Appeal against judgment of conviction and order on sentence under Section 302 of the Indian Penal Code.</dd>
-        </dl>
+        <section class="case-details">
+            <h2>Case Details</h2>
+            <dl class="detail-grid">
+                <dt>Case Type:</dt> <dd>CRL.A - Criminal Appeal</dd>
+                <dt>Case Number:</dt> <dd>123/2023</dd>
+                <dt>Parties:</dt> <dd>Arjun Kumar (Appellant) vs. State (NCT of Delhi) (Respondent)</dd>
+                <dt>Subject:</dt> <dd>Appeal against judgment of conviction and order on sentence under Section 302 of the Indian Penal Code.</dd>
+                <dt>Presiding Judge:</dt> <dd>Hon'ble Justice Rajesh Kumar</dd>
+            </dl>
+        </section>
 
-        <div class="section-title">Understanding CRL.A - Criminal Appeal</div>
-        <p>A Criminal Appeal is filed by a person convicted of a crime by a lower court (e.g., a Sessions Court). The appeal challenges the correctness of the judgment of conviction and/or the sentence imposed. In serious cases, such as those under Section 302 (murder) of the Indian Penal Code, the appeal lies before the High Court. The convicted person is the 'Appellant', and the 'State' is the 'Respondent' that prosecuted the case in the trial court.</p>
+        <section class="case-explanation">
+            <h2>Understanding CRL.A - Criminal Appeal</h2>
+            <p>A Criminal Appeal (CRL.A) is filed by a person convicted of a crime in a lower court (the 'trial court'). The appeal is a request to a higher court (the High Court in this instance) to review the trial court's decision, arguing that errors of law or fact were made. This is a fundamental right of the accused to ensure that the conviction and sentence are just and lawful. In this case, the appeal is against a murder conviction (Section 302 IPC).</p>
+        </section>
 
-        <div class="section-title">Orders of the Court</div>
-        <div class="orders-list">
+        <section class="orders">
+            <h2>Orders of the Court</h2>
+            
             <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Bail application rejected | <strong>Type:</strong> order | <strong>Date:</strong> 19-07-2024
+                <p class="order-meta">Title: Bail application rejected | Type: order | Date: 19-07-2024</p>
+                <p>The application for suspension of sentence and grant of bail during the pendency of the appeal is dismissed. The court does not find sufficient grounds to grant bail at this stage, considering the gravity of the offence.</p>
+                <div class="order-purpose">
+                    <p><strong>Purpose of the Order:</strong> While an appeal is pending, the convicted person can ask to be released on bail. The court rejected this request, likely because the crime (murder) is very serious and the evidence presented at trial was strong. The court's primary concern here is ensuring the convicted person does not abscond or pose a danger to society while the appeal is heard.</p>
                 </div>
-                <p class="order-description">The application for suspension of sentence and grant of bail is considered. Given the gravity of the offense and the evidence on record as noted by the Ld. Trial Court, this court is not inclined to grant bail at this stage. The application is dismissed.</p>
             </div>
+
             <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Admit appeal | <strong>Type:</strong> notice | <strong>Date:</strong> 12-06-2024
+                <p class="order-meta">Title: Admit appeal | Type: notice | Date: 12-06-2024</p>
+                <p>The appeal is admitted for hearing. Call for the trial court records. The Registry is directed to prepare the paper book and supply a copy to the counsel for the parties.</p>
+                <div class="order-purpose">
+                    <p><strong>Purpose of the Order:</strong> 'Admitting' the appeal means the High Court has found that there are valid legal questions to be considered and has agreed to hear the case in full. 'Calling for trial court records' is a critical step where the High Court requests all the evidence, testimony, and judgments from the original trial. This record forms the basis of the entire appeal hearing.</p>
                 </div>
-                <p class="order-description">The appeal is admitted for hearing. Call for the trial court records. The registry is directed to prepare the paper book and list the appeal for final hearing in due course.</p>
             </div>
-        </div>
-        
-        <div class="footer">
-            <p>This is a computer-generated document and does not require a signature.</p>
-            <p>For Official Use Only</p>
-        </div>
+
+        </section>
     </div>
 </body>
 </html>
-

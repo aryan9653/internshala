@@ -3,124 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAO/789/2023 - Order</title>
+    <title>Case Order - FAO 123/2023</title>
     <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 2rem;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 2.5rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #333;
-            padding-bottom: 1rem;
-        }
-        .header .emblem {
-            width: 60px;
-            height: auto;
-            margin-bottom: 0.5rem;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .header p {
-            margin: 0.2rem 0;
-            font-size: 0.9rem;
-        }
-        .section-title {
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        .case-details-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 0.5rem 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .case-details-grid dt {
-            font-weight: bold;
-            color: #444;
-        }
-        .orders-list .order-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #eee;
-        }
-        .order-meta {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-        .order-description {
-            text-align: justify;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid #ccc;
-            font-size: 0.8rem;
-            color: #777;
-        }
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 2rem; }
+        .header img { width: 50px; vertical-align: middle; }
+        .header h1 { margin: 0; font-size: 1.8rem; }
+        .header p { margin: 0.2rem 0; font-size: 0.9rem; }
+        .case-details, .orders { margin-bottom: 2rem; }
+        h2 { border-bottom: 1px solid #999; padding-bottom: 0.5rem; margin-top: 2rem; font-size: 1.4rem; }
+        .detail-grid { display: grid; grid-template-columns: 180px 1fr; gap: 0.5rem 1rem; }
+        .detail-grid dt { font-weight: bold; }
+        .order-item { border-left: 3px solid #ddd; padding-left: 1rem; margin-bottom: 1.5rem; }
+        .order-meta { font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .order-purpose { background-color: #f4f4f4; border-left: 3px solid #999; padding: 0.8rem; margin-top: 0.5rem; font-style: italic; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDh6bS0xLTVoMlY4aC0yem0wIDRoMlYxMWgtMnoiLz48L3N2Zz4=" alt="Emblem of India" class="emblem" />
+        <header class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India">
             <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
-            <p>Sher Shah Road, New Delhi-110503</p>
-            <p>Website: www.delhihighcourt.nic.in</p>
-        </div>
+            <p>(ORDINARY ORIGINAL CIVIL JURISDICTION)</p>
+            <p><a href="http://delhihighcourt.nic.in">delhihighcourt.nic.in</a></p>
+        </header>
 
-        <div class="section-title">Case Details: FAO/789/2023</div>
-        <dl class="case-details-grid">
-            <dt>Case Type:</dt> <dd>FAO - First Appeal from Order</dd>
-            <dt>Case Number:</dt> <dd>789/2023</dd>
-            <dt>Parties:</dt> <dd>Creative Designs Inc. (Appellant) vs. Innovate Tech Solutions (Respondent)</dd>
-            <dt>Subject:</dt> <dd>Appeal against an ad-interim injunction order passed by the trial court in a copyright infringement suit.</dd>
-        </dl>
+        <section class="case-details">
+            <h2>Case Details</h2>
+            <dl class="detail-grid">
+                <dt>Case Type:</dt> <dd>FAO - First Appeal from Order</dd>
+                <dt>Case Number:</dt> <dd>123/2023</dd>
+                <dt>Parties:</dt> <dd>Creative Designs Inc. (Appellant) vs. Innovate Tech Solutions (Respondent)</dd>
+                <dt>Subject:</dt> <dd>Appeal against the ad-interim injunction order passed by the trial court.</dd>
+                <dt>Presiding Judge:</dt> <dd>Hon'ble Justice Rajesh Kumar</dd>
+            </dl>
+        </section>
 
-        <div class="section-title">Understanding FAO - First Appeal from Order</div>
-        <p>A First Appeal from Order (FAO) is an appeal filed in the High Court against an order passed by a lower court (like a District Court) during the course of a lawsuit, i.e., before the final judgment. These appeals typically challenge interim orders, such as an order granting or refusing a temporary injunction. The 'Appellant' is the party who is aggrieved by the lower court's order and files the appeal, while the 'Respondent' is the other party.</p>
+        <section class="case-explanation">
+            <h2>Understanding FAO - First Appeal from Order</h2>
+            <p>A First Appeal from Order (FAO) is an appeal filed in a higher court (here, the High Court) against an order passed by a lower court (the 'trial court') in a civil case. It is not an appeal against the final judgment, but rather against a specific interim (temporary) order passed during the proceedings. In this case, the appellant is challenging a temporary injunction, which likely restricted them from doing something.</p>
+        </section>
 
-        <div class="section-title">Orders of the Court</div>
-        <div class="orders-list">
+        <section class="orders">
+            <h2>Orders of the Court</h2>
+            
             <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Stay on lower court order | <strong>Type:</strong> order | <strong>Date:</strong> 25-07-2024
+                <p class="order-meta">Title: Stay on lower court order | Type: order | Date: 25-07-2024</p>
+                <p>The operation of the impugned order dated [Trial Court Order Date] passed by the Ld. Additional District Judge is stayed till the next date of hearing. The appellant has made out a prima facie case for the grant of interim relief.</p>
+                <div class="order-purpose">
+                    <p><strong>Purpose of the Order:</strong> A 'stay' order temporarily freezes the effect of the lower court's decision. Here, the High Court believes the appellant (Creative Designs Inc.) has a strong initial argument. To prevent irreparable harm to the appellant while the appeal is being decided, the High Court has paused the lower court's injunction. This is a significant temporary victory for the appellant.</p>
                 </div>
-                <p class="order-description">The operation of the impugned order dated [Date of Lower Court Order] passed by the Ld. Trial Court is stayed till the next date of hearing. The appellant shall comply with the provisions of Order XXXIX, Rule 3 of the CPC.</p>
             </div>
+
             <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Notice of appeal | <strong>Type:</strong> notice | <strong>Date:</strong> 20-06-2024
+                <p class="order-meta">Title: Notice of appeal | Type: notice | Date: 20-06-2024</p>
+                <p>Issue notice of the appeal to the respondent, returnable on 25-07-2024. The appellant is directed to provide a copy of the appeal paper book to the respondent.</p>
+                <div class="order-purpose">
+                    <p><strong>Purpose of the Order:</strong> This is the formal communication to the other party (the respondent) that an appeal has been filed against the lower court's order which was in their favor. It ensures they are aware of the appeal and have a chance to appear and defend the lower court's decision. It is the first step in the appellate process.</p>
                 </div>
-                <p class="order-description">Issue notice of the appeal to the respondent, returnable on 25-07-2024. The appellant is directed to provide a complete set of the appeal paper book to the respondent's counsel.</p>
             </div>
-        </div>
-        
-        <div class="footer">
-            <p>This is a computer-generated document and does not require a signature.</p>
-            <p>For Official Use Only</p>
-        </div>
+
+        </section>
     </div>
 </body>
 </html>
-

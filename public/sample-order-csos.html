@@ -3,124 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS(OS)/456/2023 - Order</title>
+    <title>Case Order - CS(OS) 123/2023</title>
     <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 2rem;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 2.5rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #333;
-            padding-bottom: 1rem;
-        }
-        .header .emblem {
-            width: 60px;
-            height: auto;
-            margin-bottom: 0.5rem;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .header p {
-            margin: 0.2rem 0;
-            font-size: 0.9rem;
-        }
-        .section-title {
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        .case-details-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 0.5rem 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .case-details-grid dt {
-            font-weight: bold;
-            color: #444;
-        }
-        .orders-list .order-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #eee;
-        }
-        .order-meta {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-        .order-description {
-            text-align: justify;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid #ccc;
-            font-size: 0.8rem;
-            color: #777;
-        }
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 2rem; }
+        .header img { width: 50px; vertical-align: middle; }
+        .header h1 { margin: 0; font-size: 1.8rem; }
+        .header p { margin: 0.2rem 0; font-size: 0.9rem; }
+        .case-details, .orders { margin-bottom: 2rem; }
+        h2 { border-bottom: 1px solid #999; padding-bottom: 0.5rem; margin-top: 2rem; font-size: 1.4rem; }
+        .detail-grid { display: grid; grid-template-columns: 180px 1fr; gap: 0.5rem 1rem; }
+        .detail-grid dt { font-weight: bold; }
+        .order-item { border-left: 3px solid #ddd; padding-left: 1rem; margin-bottom: 1.5rem; }
+        .order-meta { font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .order-purpose { background-color: #f4f4f4; border-left: 3px solid #999; padding: 0.8rem; margin-top: 0.5rem; font-style: italic; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDh6bS0xLTVoMlY4aC0yem0wIDRoMlYxMWgtMnoiLz48L3N2Zz4=" alt="Emblem of India" class="emblem" />
+        <header class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India">
             <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
-            <p>Sher Shah Road, New Delhi-110503</p>
-            <p>Website: www.delhihighcourt.nic.in</p>
-        </div>
+            <p>(ORDINARY ORIGINAL CIVIL JURISDICTION)</p>
+            <p><a href="http://delhihighcourt.nic.in">delhihighcourt.nic.in</a></p>
+        </header>
 
-        <div class="section-title">Case Details: CS(OS)/456/2023</div>
-        <dl class="case-details-grid">
-            <dt>Case Type:</dt> <dd>CS(OS) - Civil Suit (Original Side)</dd>
-            <dt>Case Number:</dt> <dd>456/2023</dd>
-            <dt>Parties:</dt> <dd>ABC Corporation Ltd. (Plaintiff) vs. XYZ Pvt. Ltd. (Defendant)</dd>
-            <dt>Subject:</dt> <dd>Suit for recovery of money and damages for breach of contract.</dd>
-        </dl>
+        <section class="case-details">
+            <h2>Case Details</h2>
+            <dl class="detail-grid">
+                <dt>Case Type:</dt> <dd>CS(OS) - Civil Suit (Original Side)</dd>
+                <dt>Case Number:</dt> <dd>123/2023</dd>
+                <dt>Parties:</dt> <dd>ABC Corporation Ltd. (Plaintiff) vs. XYZ Pvt. Ltd. (Defendant)</dd>
+                <dt>Subject:</dt> <dd>Suit for recovery of money and damages for breach of contract.</dd>
+                <dt>Presiding Judge:</dt> <dd>Hon'ble Justice Rajesh Kumar</dd>
+            </dl>
+        </section>
 
-        <div class="section-title">Understanding CS(OS) - Civil Suit (Original Side)</div>
-        <p>A Civil Suit (Original Side) is a lawsuit filed directly in the High Court, which acts as the court of first instance. This happens when the monetary value of the dispute is above a certain threshold (pecuniary jurisdiction). These suits typically involve commercial disputes, property matters, or contractual disagreements. The 'Plaintiff' is the party who files the suit, and the 'Defendant' is the party against whom the suit is filed.</p>
+        <section class="case-explanation">
+            <h2>Understanding CS(OS) - Civil Suit (Original Side)</h2>
+            <p>A Civil Suit (Original Side) is a lawsuit of a civil nature filed directly in the High Court, which is acting as the court of first instance (i.e., its 'Original Jurisdiction'). This typically happens for cases of a specific nature or high pecuniary value, as defined by law. This case, involving a claim for money and damages, is a classic example of a commercial dispute handled by the High Court's Original Side.</p>
+        </section>
 
-        <div class="section-title">Orders of the Court</div>
-        <div class="orders-list">
+        <section class="orders">
+            <h2>Orders of the Court</h2>
+            
             <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Application for summary judgment | <strong>Type:</strong> order | <strong>Date:</strong> 15-07-2024
+                <p class="order-meta">Title: Application for summary judgment | Type: order | Date: 15-07-2024</p>
+                <p>The application filed by the Plaintiff under Order XIIIA of the Code of Civil Procedure, 1908, for summary judgment is hereby dismissed. The court is of the view that the Defendant has raised triable issues that require leading of evidence. The case will proceed to trial.</p>
+                <div class="order-purpose">
+                    <p><strong>Purpose of the Order:</strong> A summary judgment is a shortcut to a final decision without a full trial. The Plaintiff likely argued that the Defendant had no real defense. By dismissing this application, the court has decided that the Defendant's arguments have merit and deserve a full hearing with witnesses and evidence. This ensures a fair trial.</p>
                 </div>
-                <p class="order-description">The application for summary judgment filed by the Plaintiff under Order XIII-A of the Code of Civil Procedure, 1908, is considered. Upon hearing counsel for both parties, the court is of the view that there are triable issues that require evidence. The application is dismissed. The case will proceed to trial.</p>
             </div>
+
             <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Summons issued to defendant | <strong>Type:</strong> notice | <strong>Date:</strong> 10-05-2024
+                <p class="order-meta">Title: Summons issued to defendant | Type: notice | Date: 10-05-2024</p>
+                <p>Summons to be served upon the Defendant. The Defendant is directed to file a written statement within 30 days of the receipt of the summons. The summons shall indicate that if the defendant fails to appear, the suit may be heard and decided ex-parte.</p>
+                <div class="order-purpose">
+                    <p><strong>Purpose of the Order:</strong> This is the formal notification to the defendant that they are being sued. The summons legally obligates the defendant to appear in court and respond to the plaintiff's claims. The direction to file a "written statement" is the instruction to provide a formal, point-by-point reply to the allegations made in the suit.</p>
                 </div>
-                <p class="order-description">Summons to be served upon the defendant. The defendant is directed to file a written statement of defense within 30 days of service. The written statement must be accompanied by an affidavit of admission/denial of the plaintiff's documents.</p>
             </div>
-        </div>
-        
-        <div class="footer">
-            <p>This is a computer-generated document and does not require a signature.</p>
-            <p>For Official Use Only</p>
-        </div>
+
+        </section>
     </div>
 </body>
 </html>
-

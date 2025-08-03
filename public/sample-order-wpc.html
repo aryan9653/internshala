@@ -3,124 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W.P.(C)/123/2023 - Order</title>
+    <title>Case Order - W.P.(C) 123/2023</title>
     <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 2rem;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 2.5rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #333;
-            padding-bottom: 1rem;
-        }
-        .header .emblem {
-            width: 60px;
-            height: auto;
-            margin-bottom: 0.5rem;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .header p {
-            margin: 0.2rem 0;
-            font-size: 0.9rem;
-        }
-        .section-title {
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        .case-details-grid, .orders-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 0.5rem 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .case-details-grid dt, .orders-grid dt {
-            font-weight: bold;
-            color: #444;
-        }
-        .orders-list .order-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #eee;
-        }
-        .order-meta {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-        .order-description {
-            text-align: justify;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid #ccc;
-            font-size: 0.8rem;
-            color: #777;
-        }
+        body { font-family: 'Times New Roman', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 2rem; }
+        .header img { width: 50px; vertical-align: middle; }
+        .header h1 { margin: 0; font-size: 1.8rem; }
+        .header p { margin: 0.2rem 0; font-size: 0.9rem; }
+        .case-details, .orders { margin-bottom: 2rem; }
+        h2 { border-bottom: 1px solid #999; padding-bottom: 0.5rem; margin-top: 2rem; font-size: 1.4rem; }
+        .detail-grid { display: grid; grid-template-columns: 180px 1fr; gap: 0.5rem 1rem; }
+        .detail-grid dt { font-weight: bold; }
+        .order-item { border-left: 3px solid #ddd; padding-left: 1rem; margin-bottom: 1.5rem; }
+        .order-meta { font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .order-purpose { background-color: #f4f4f4; border-left: 3px solid #999; padding: 0.8rem; margin-top: 0.5rem; font-style: italic; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDh6bS0xLTVoMlY4aC0yem0wIDRoMlYxMWgtMnoiLz48L3N2Zz4=" alt="Emblem of India" class="emblem" />
+        <header class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India">
             <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
-            <p>Sher Shah Road, New Delhi-110503</p>
-            <p>Website: www.delhihighcourt.nic.in</p>
-        </div>
+            <p>(ORDINARY ORIGINAL CIVIL JURISDICTION)</p>
+            <p><a href="http://delhihighcourt.nic.in">delhihighcourt.nic.in</a></p>
+        </header>
 
-        <div class="section-title">Case Details: W.P.(C)/123/2023</div>
-        <dl class="case-details-grid">
-            <dt>Case Type:</dt> <dd>W.P.(C) - Writ Petition (Civil)</dd>
-            <dt>Case Number:</dt> <dd>123/2023</dd>
-            <dt>Parties:</dt> <dd>Green Earth Foundation (Petitioner) vs. Union of India & Ors. (Respondent)</dd>
-            <dt>Subject:</dt> <dd>Public Interest Litigation regarding environmental clearances for a major infrastructure project.</dd>
-        </dl>
+        <section class="case-details">
+            <h2>Case Details</h2>
+            <dl class="detail-grid">
+                <dt>Case Type:</dt> <dd>W.P.(C) - Writ Petition (Civil)</dd>
+                <dt>Case Number:</dt> <dd>123/2023</dd>
+                <dt>Parties:</dt> <dd>Green Earth Foundation (Petitioner) vs. Union of India & Ors. (Respondents)</dd>
+                <dt>Subject:</dt> <dd>Public Interest Litigation regarding environmental clearances.</dd>
+                <dt>Presiding Judge:</dt> <dd>Hon'ble Justice Rajesh Kumar</dd>
+            </dl>
+        </section>
 
-        <div class="section-title">Understanding W.P.(C) - Writ Petition (Civil)</div>
-        <p>A Writ Petition (Civil) is filed under Article 226 of the Constitution of India. It is a powerful legal tool used to protect the fundamental rights of citizens. Individuals or groups can approach the High Court to seek remedies against the actions of government bodies, public officials, or other state instrumentalities. A "Public Interest Litigation" (PIL) is a type of writ petition where the case is filed not for personal gain but for the benefit of the public at large, often concerning issues like environmental protection, human rights, or public health.</p>
+        <section class="case-explanation">
+            <h2>Understanding W.P.(C) - Writ Petition (Civil)</h2>
+            <p>A Writ Petition (Civil) is a formal written order from a court, in this case, the High Court. It is filed to enforce fundamental rights guaranteed by the Constitution of India. This type of petition is used when a citizen or entity believes their rights have been violated by the state or a government body. In a Public Interest Litigation (PIL), like this case, the petition is filed for the protection of public interest, such as pollution, terrorism, and road safety.</p>
+        </section>
 
-        <div class="section-title">Orders of the Court</div>
-        <div class="orders-list">
+        <section class="orders">
+            <h2>Orders of the Court</h2>
+            
             <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Direction to file status report | <strong>Type:</strong> order | <strong>Date:</strong> 22-07-2024
+                <p class="order-meta">Title: Direction to file status report | Type: order | Date: 22-07-2024</p>
+                <p>Respondents are directed to file a detailed status report on the measures taken to comply with environmental norms within four weeks. The report should be supported by an affidavit from a senior official not below the rank of Joint Secretary.</p>
+                <div class="order-purpose">
+                    <p><strong>Purpose of the Order:</strong> This directive is crucial for the court to understand the current situation and the actions taken by the government so far. By asking for a sworn affidavit, the court ensures accountability and the authenticity of the information provided. It's a standard step in PILs to gather facts before making further decisions.</p>
                 </div>
-                <p class="order-description">Respondents are directed to file a detailed status report on the measures taken to comply with environmental norms within four weeks. The report should be supported by an affidavit from a senior official.</p>
             </div>
-            <div class="order-item">
-                <div class="order-meta">
-                    <strong>Title:</strong> Notice issued | <strong>Type:</strong> notice | <strong>Date:</strong> 18-06-2024
-                </div>
-                <p class="order-description">Issue notice to all concerned parties. Reply to be filed within four weeks. The petitioner is directed to supply a complete set of the petition to the respondents. The matter is listed for further hearing on 22-07-2024.</p>
-            </div>
-        </div>
 
-        <div class="footer">
-            <p>This is a computer-generated document and does not require a signature.</p>
-            <p>For Official Use Only</p>
-        </div>
+            <div class="order-item">
+                <p class="order-meta">Title: Notice issued | Type: notice | Date: 18-06-2024</p>
+                <p>Issue notice to all concerned parties. Reply to be filed within four weeks. The petitioner is directed to supply a complete set of the petition to the respondents through their counsel. The matter is listed for further hearing on 22-07-2024.</p>
+                <div class="order-purpose">
+                     <p><strong>Purpose of the Order:</strong> This is the initial step in any court case. The 'notice' formally informs the respondents (the government bodies in this case) that a case has been filed against them. This adheres to the principle of 'audi alteram partem' (hear the other side), a cornerstone of natural justice. It gives the respondents a fair opportunity to present their side of the story.</p>
+                </div>
+            </div>
+
+        </section>
     </div>
 </body>
 </html>
-
