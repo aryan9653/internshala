@@ -3,72 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Court Order - FAO</title>
+    <title>Sample Order - FAO</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 2rem;
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
         }
         .container {
             max-width: 800px;
             margin: auto;
-            background: #fff;
+            background-color: #fff;
             padding: 2rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border: 1px solid #dee2e6;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .header {
             text-align: center;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #000;
             padding-bottom: 1rem;
             margin-bottom: 2rem;
         }
         .header h1 {
             margin: 0;
-            font-size: 1.8rem;
-            color: #333;
+            font-size: 1.5rem;
         }
         .header p {
             margin: 0;
-            font-size: 1rem;
-            color: #555;
+            font-size: 1.1rem;
         }
-        .section {
-            margin-bottom: 2rem;
-        }
-        .section h2 {
-            font-size: 1.4rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            color: #444;
-        }
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 0.5rem;
-        }
-        .details-grid dt {
+        .section-title {
             font-weight: bold;
-            color: #555;
+            text-decoration: underline;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
         }
-        .order {
-            border-left: 4px solid #ffc107;
-            padding-left: 1rem;
+        .case-details, .orders {
             margin-bottom: 1.5rem;
+        }
+        .case-details p, .order-item p {
+            margin: 0.5rem 0;
+        }
+        .order-item {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .order-item:last-child {
+            border-bottom: none;
         }
         .order-title {
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
         }
-        .order-meta {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
+        .explanation {
+            background-color: #e9ecef;
+            border-left: 4px solid #0d6efd;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
         }
     </style>
 </head>
@@ -79,36 +73,32 @@
             <p>(CIVIL APPELLATE JURISDICTION)</p>
         </div>
 
-        <div class="section">
-            <h2>Case Details</h2>
-            <dl class="details-grid">
-                <dt>Case Type:</dt>
-                <dd>FAO - First Appeal from Order</dd>
-                <dt>Case Number:</dt>
-                <dd>[Case Number]/[Filing Year]</dd>
-                <dt>Parties:</dt>
-                <dd>Creative Designs Inc. vs. Innovate Tech Solutions</dd>
-                <dt>Subject:</dt>
-                <dd>Appeal against ad-interim injunction order.</dd>
-            </dl>
+        <div class="case-details">
+            <h2 class="section-title">Case Details</h2>
+            <p><strong>Case Type:</strong> FAO - First Appeal from Order</p>
+            <p><strong>Case Number:</strong> [Case Number]/[Filing Year]</p>
+            <p><strong>Parties:</strong> Creative Designs Inc. vs. Innovate Tech Solutions</p>
+            <p><strong>Subject:</strong> Appeal against ad-interim injunction order.</p>
         </div>
 
-        <div class="section">
-            <h2>Understanding a First Appeal from Order (FAO)</h2>
-            <p>A First Appeal from Order (FAO) is an appeal filed against an interim or procedural order of a lower court, rather than against the final judgment. These appeals are crucial for challenging decisions made during the course of a lawsuit, such as an order granting or refusing a temporary injunction, which could have a significant impact on the parties before the case is fully decided.</p>
+        <div class="explanation">
+            <h3 class="section-title">Understanding a First Appeal from Order (FAO)</h3>
+            <p>
+                A First Appeal from Order (FAO) is an appeal filed in a High Court against an interim or temporary order passed by a lower court during a pending suit. It does not challenge the final judgment but rather a specific, intermediate decision. Common examples include appeals against orders granting or refusing a temporary injunction, which is an order to prevent a party from doing a certain act until the case is finally decided.
+            </p>
         </div>
 
-        <div class="section">
-            <h2>Orders of the Court</h2>
-            <div class="order">
+        <div class="orders">
+            <h2 class="section-title">Orders of the Court</h2>
+            <div class="order-item">
                 <p class="order-title">Stay on lower court order</p>
-                <p class="order-meta">Type: order | Date: 25-07-2024</p>
-                <p>The operation of the impugned order of the trial court is stayed till the next date of hearing.</p>
+                <p><strong>Type:</strong> order | <strong>Date:</strong> 25-07-2024</p>
+                <p>The operation of the impugned order of the trial court is stayed till the next date of hearing. This means the temporary injunction granted by the lower court is paused.</p>
             </div>
-            <div class="order">
+            <div class="order-item">
                 <p class="order-title">Notice of appeal</p>
-                <p class="order-meta">Type: notice | Date: 20-06-2024</p>
-                <p>Issue notice of the appeal to the respondent.</p>
+                <p><strong>Type:</strong> notice | <strong>Date:</strong> 20-06-2024</p>
+                <p>Issue notice of the appeal to the respondent. The respondent may file a reply to the appeal before the next hearing date.</p>
             </div>
         </div>
     </div>

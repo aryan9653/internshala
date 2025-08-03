@@ -3,72 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Court Order - CS(OS)</title>
+    <title>Sample Order - CS(OS)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 2rem;
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
         }
         .container {
             max-width: 800px;
             margin: auto;
-            background: #fff;
+            background-color: #fff;
             padding: 2rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border: 1px solid #dee2e6;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .header {
             text-align: center;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #000;
             padding-bottom: 1rem;
             margin-bottom: 2rem;
         }
         .header h1 {
             margin: 0;
-            font-size: 1.8rem;
-            color: #333;
+            font-size: 1.5rem;
         }
         .header p {
             margin: 0;
-            font-size: 1rem;
-            color: #555;
+            font-size: 1.1rem;
         }
-        .section {
-            margin-bottom: 2rem;
-        }
-        .section h2 {
-            font-size: 1.4rem;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            color: #444;
-        }
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 0.5rem;
-        }
-        .details-grid dt {
+        .section-title {
             font-weight: bold;
-            color: #555;
+            text-decoration: underline;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
         }
-        .order {
-            border-left: 4px solid #28a745;
-            padding-left: 1rem;
+        .case-details, .orders {
             margin-bottom: 1.5rem;
+        }
+        .case-details p, .order-item p {
+            margin: 0.5rem 0;
+        }
+        .order-item {
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        .order-item:last-child {
+            border-bottom: none;
         }
         .order-title {
             font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
         }
-        .order-meta {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 0.5rem;
+        .explanation {
+            background-color: #e9ecef;
+            border-left: 4px solid #0d6efd;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
         }
     </style>
 </head>
@@ -79,36 +73,32 @@
             <p>(ORDINARY ORIGINAL CIVIL JURISDICTION)</p>
         </div>
 
-        <div class="section">
-            <h2>Case Details</h2>
-            <dl class="details-grid">
-                <dt>Case Type:</dt>
-                <dd>CS(OS) - Civil Suit (Original Side)</dd>
-                <dt>Case Number:</dt>
-                <dd>[Case Number]/[Filing Year]</dd>
-                <dt>Parties:</dt>
-                <dd>ABC Corporation Ltd. vs. XYZ Pvt. Ltd.</dd>
-                <dt>Subject:</dt>
-                <dd>Suit for recovery of money and damages.</dd>
-            </dl>
+        <div class="case-details">
+            <h2 class="section-title">Case Details</h2>
+            <p><strong>Case Type:</strong> CS(OS) - Civil Suit (Original Side)</p>
+            <p><strong>Case Number:</strong> [Case Number]/[Filing Year]</p>
+            <p><strong>Parties:</strong> ABC Corporation Ltd. vs. XYZ Pvt. Ltd.</p>
+            <p><strong>Subject:</strong> Suit for recovery of money and damages.</p>
         </div>
 
-        <div class="section">
-            <h2>Understanding a Civil Suit (Original Side) - CS(OS)</h2>
-            <p>A Civil Suit (Original Side) is a lawsuit of a civil nature that originates directly in the High Court, bypassing the lower district courts. This typically happens when the monetary value of the dispute is very high (above a certain threshold set by law) or involves specific matters that the High Court is empowered to hear first. These suits deal with non-criminal disputes like property, contracts, and monetary claims.</p>
+        <div class="explanation">
+            <h3 class="section-title">Understanding a Civil Suit (Original Side) - CS(OS)</h3>
+            <p>
+                A Civil Suit (Original Side) is a lawsuit of a civil nature that originates directly in the High Court, bypassing the lower district courts. This typically happens when the monetary value of the dispute is very high (above a certain threshold set by law) or involves specific matters that the High Court is empowered to hear first. These suits deal with non-criminal disputes like property, contracts, and monetary claims.
+            </p>
         </div>
 
-        <div class="section">
-            <h2>Orders of the Court</h2>
-            <div class="order">
+        <div class="orders">
+            <h2 class="section-title">Orders of the Court</h2>
+            <div class="order-item">
                 <p class="order-title">Application for summary judgment</p>
-                <p class="order-meta">Type: order | Date: 15-07-2024</p>
-                <p>The application for summary judgment is dismissed. The case will proceed to trial.</p>
+                <p><strong>Type:</strong> order | <strong>Date:</strong> 15-07-2024</p>
+                <p>The application for summary judgment is dismissed. The court finds that there are triable issues that require the examination of evidence. The case will proceed to trial.</p>
             </div>
-            <div class="order">
+            <div class="order-item">
                 <p class="order-title">Summons issued to defendant</p>
-                <p class="order-meta">Type: notice | Date: 10-05-2024</p>
-                <p>Summons to be served upon the defendant. Written statement to be filed.</p>
+                <p><strong>Type:</strong> notice | <strong>Date:</strong> 10-05-2024</p>
+                <p>Summons to be served upon the defendant. The defendant is directed to file their written statement (response) within 30 days of receiving the summons.</p>
             </div>
         </div>
     </div>
