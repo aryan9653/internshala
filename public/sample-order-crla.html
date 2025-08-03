@@ -1,106 +1,138 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Order - CRL.A</title>
+    <title>Order in CRL.A/123/2024</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 2rem;
-            background-color: #f8f9fa;
-        }
-        .container {
+            margin: 0 auto;
             max-width: 800px;
-            margin: auto;
-            background-color: #fff;
             padding: 2rem;
-            border: 1px solid #dee2e6;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            color: #333;
         }
-        .header {
+        .header, .court-name, .jurisdiction {
             text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 1rem;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .court-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .jurisdiction {
+            font-size: 1rem;
             margin-bottom: 2rem;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        .header p {
-            margin: 0;
-            font-size: 1.1rem;
+            font-style: italic;
         }
         .section-title {
             font-weight: bold;
             text-decoration: underline;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             margin-bottom: 1rem;
         }
-        .case-details, .orders {
+        .details-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 0.5rem;
             margin-bottom: 1.5rem;
         }
-        .case-details p, .order-item p {
-            margin: 0.5rem 0;
-        }
-        .order-item {
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-        }
-        .order-item:last-child {
-            border-bottom: none;
-        }
-        .order-title {
+        .details-grid dt {
             font-weight: bold;
         }
-        .explanation {
-            background-color: #e9ecef;
-            border-left: 4px solid #0d6efd;
+        .order {
+            border: 1px solid #ccc;
             padding: 1rem;
-            margin: 1.5rem 0;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .order-meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .explanation {
+            background-color: #f4f4f4;
+            border-left: 4px solid #ddd;
+            padding: 1rem;
+            margin-top: 1rem;
             font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
-            <p>(CRIMINAL APPELLATE JURISDICTION)</p>
-        </div>
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z" opacity="0.2"/>
+            <path d="M128,72a20,20,0,1,0-20-20A20,20,0,0,0,128,72Zm0-24a4,4,0,1,1-4,4A4,4,0,0,1,128,48Z"/>
+            <path d="M188,128a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V136A8,8,0,0,0,188,128Z"/>
+            <path d="M68,128a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V136A8,8,0,0,0,68,128Z"/>
+            <path d="M128,112a44,44,0,0,0-44,44v24a4,4,0,0,0,4,4H168a4,4,0,0,0,4-4V156A44,44,0,0,0,128,112Zm28,64H92V156a36,36,0,0,1,72,0Z"/>
+            <path d="M224,128a8,8,0,0,0-8,8,80,80,0,0,1-152.65,29.18A8,8,0,1,0,54.8,179.82,96,96,0,0,0,216,136,8,8,0,0,0,224,128Z" opacity="0.2"/>
+        </svg>
+    </div>
 
-        <div class="case-details">
-            <h2 class="section-title">Case Details</h2>
-            <p><strong>Case Type:</strong> CRL.A - Criminal Appeal</p>
-            <p><strong>Case Number:</strong> [Case Number]/[Filing Year]</p>
-            <p><strong>Parties:</strong> State (NCT of Delhi) vs. Arjun Kumar</p>
-            <p><strong>Subject:</strong> Appeal against conviction under Section 302 IPC.</p>
-        </div>
+    <div class="header">
+        <div class="court-name">IN THE HIGH COURT OF DELHI AT NEW DELHI</div>
+        <div class="jurisdiction">(CRIMINAL APPELLATE JURISDICTION)</div>
+    </div>
 
-        <div class="explanation">
-            <h3 class="section-title">Understanding a Criminal Appeal (CRL.A)</h3>
-            <p>
-                A Criminal Appeal is a request made to a higher court (like the High Court) to review and change the decision of a lower court (like a Sessions Court) in a criminal case. This can be filed by the person convicted, seeking acquittal or a reduced sentence, or by the State, seeking a conviction or an enhanced sentence. In this instance, it is an appeal against a conviction for murder (Section 302 of the Indian Penal Code).
-            </p>
-        </div>
+    <div class="section-title">Case Details</div>
+    <dl class="details-grid">
+        <dt>Case Type:</dt>
+        <dd>CRL.A - Criminal Appeal</dd>
+        <dt>Case Number:</dt>
+        <dd>[Case Number]/[Filing Year]</dd>
+        <dt>Parties:</dt>
+        <dd>State (NCT of Delhi) vs. Arjun Kumar</dd>
+        <dt>Subject:</dt>
+        <dd>Appeal against conviction under Section 302 IPC.</dd>
+    </dl>
 
-        <div class="orders">
-            <h2 class="section-title">Orders of the Court</h2>
-            <div class="order-item">
-                <p class="order-title">Bail application rejected</p>
-                <p><strong>Type:</strong> order | <strong>Date:</strong> 19-07-2024</p>
-                <p>The application for suspension of sentence and grant of bail is dismissed. The court found no sufficient grounds to grant bail during the pendency of the appeal.</p>
-            </div>
-            <div class="order-item">
-                <p class="order-title">Admit appeal</p>
-                <p><strong>Type:</strong> notice | <strong>Date:</strong> 12-06-2024</p>
-                <p>The appeal is admitted for hearing. The registry is directed to call for the trial court records to examine the evidence and judgment. The matter will be listed for a final hearing in due course.</p>
-            </div>
+    <div class="explanation">
+        <div class="section-title" style="margin-top:0; text-decoration:none;">Understanding a Criminal Appeal (CRL.A)</div>
+        <p>A Criminal Appeal is filed in the High Court to challenge the judgment of a lower criminal court (like a Sessions Court). This can be filed by a person who has been convicted of a crime, seeking to have their conviction overturned or their sentence reduced. The State can also file an appeal to seek a more severe punishment or to challenge an acquittal. These appeals involve a re-examination of the evidence and legal arguments from the original trial.</p>
+    </div>
+
+    <div class="section-title">Orders of the Court</div>
+
+    <div class="order">
+        <div class="order-header">
+            <span>Bail application rejected</span>
+        </div>
+        <div class="order-meta">
+            <span>Type: order</span> | <span>Date: 19-07-2024</span>
+        </div>
+        <div class="order-content">
+            The application for suspension of sentence and grant of bail is dismissed, considering the gravity of the offense and the evidence on record. The appeal shall be listed for final hearing in due course.
+        </div>
+    </div>
+
+    <div class="order">
+        <div class="order-header">
+            <span>Admit appeal</span>
+        </div>
+        <div class="order-meta">
+            <span>Type: notice</span> | <span>Date: 12-06-2024</span>
+        </div>
+        <div class="order-content">
+            The appeal is admitted for hearing. The registry is directed to call for the trial court records, including the evidence and judgment. Paper book to be prepared and supplied to both parties before the next date.
         </div>
     </div>
 </body>
 </html>
+
+    
