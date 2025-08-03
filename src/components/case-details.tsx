@@ -9,7 +9,9 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { FileText, ShieldAlert, Sparkles, Wand2, Bot, Loader2, Clock } from 'lucide-react';
+import { FileText, ShieldAlert, Sparkles, Wand2, Bot, Loader2, Clock, Download } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface CaseDetailsProps {
   data: CaseData;
@@ -43,9 +45,17 @@ function OrderCard({
                 <div className="flex-grow border-l-2 border-dashed border-border my-2"></div>
             </div>
             <div>
-                <div className="flex items-center gap-4">
-                    <h3 className="font-semibold">{order.title}</h3>
-                    <Badge variant={isNotice ? 'default' : 'secondary'} className="capitalize">{order.type}</Badge>
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                        <h3 className="font-semibold">{order.title}</h3>
+                        <Badge variant={isNotice ? 'default' : 'secondary'} className="capitalize">{order.type}</Badge>
+                    </div>
+                     <Button variant="ghost" size="sm" asChild>
+                        <Link href={order.pdfUrl} target="_blank" download>
+                           <Download className="mr-2 h-4 w-4"/>
+                           Download
+                        </Link>
+                    </Button>
                 </div>
                 <p className="text-sm text-muted-foreground mt-1 mb-2">{order.date}</p>
                 <p className="text-sm text-muted-foreground mb-3">{order.description}</p>
