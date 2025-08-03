@@ -1,6 +1,5 @@
 
 'use server';
-import FirecrawlApp from 'firecrawl';
 import { z } from 'zod';
 
 // Load environment variables
