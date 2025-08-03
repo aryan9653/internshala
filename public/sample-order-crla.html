@@ -1,70 +1,126 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Court Order - CRL.A</title>
+    <title>CRL.A/101/2023 - Order</title>
     <style>
-        body { font-family: 'Times New Roman', Times, serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
-        .header h2, .header h3 { margin: 0; }
-        .case-details-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5px 15px; margin-bottom: 20px; }
-        .case-details-grid dt { font-weight: bold; }
-        .case-details-grid dd { margin: 0; }
-        h4 { border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 30px; }
-        .explanation { background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-        .order { border-left: 3px solid #6c757d; padding-left: 15px; margin-bottom: 20px; }
-        .order-title { font-weight: bold; font-size: 1.1em; }
-        .order-meta { font-size: 0.9em; color: #555; margin-bottom: 10px; }
-        .order-content { text-align: justify; }
-        .footer { text-align: center; margin-top: 40px; font-style: italic; color: #777; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+        }
+        .header .emblem {
+            width: 60px;
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+        }
+        .section-title {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .case-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .case-details-grid dt {
+            font-weight: bold;
+            color: #444;
+        }
+        .orders-list .order-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid #eee;
+        }
+        .order-meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        .order-description {
+            text-align: justify;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+            font-size: 0.8rem;
+            color: #777;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h2>IN THE HIGH COURT OF DELHI AT NEW DELHI</h2>
-            <h3>(CRIMINAL APPELLATE JURISDICTION)</h3>
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDh6bS0xLTVoMlY4aC0yem0wIDRoMlYxMWgtMnoiLz48L3N2Zz4=" alt="Emblem of India" class="emblem" />
+            <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
+            <p>Sher Shah Road, New Delhi-110503</p>
+            <p>Website: www.delhihighcourt.nic.in</p>
         </div>
 
-        <h4>CASE DETAILS - CRL.A 101/2024</h4>
+        <div class="section-title">Case Details: CRL.A/101/2023</div>
         <dl class="case-details-grid">
             <dt>Case Type:</dt> <dd>CRL.A - Criminal Appeal</dd>
-            <dt>Case Number:</dt> <dd>101 / 2024</dd>
-            <dt>Appellant:</dt> <dd>Arjun Kumar</dd>
-            <dt>Respondent:</dt> <dd>State (NCT of Delhi)</dd>
-            <dt>Subject:</dt> <dd>Appeal against conviction under Section 302 IPC.</dd>
-            <dt>Next Hearing:</dt> <dd>05-08-2024</dd>
+            <dt>Case Number:</dt> <dd>101/2023</dd>
+            <dt>Parties:</dt> <dd>Arjun Kumar (Appellant) vs. State (NCT of Delhi) (Respondent)</dd>
+            <dt>Subject:</dt> <dd>Appeal against judgment of conviction and order on sentence under Section 302 of the Indian Penal Code.</dd>
         </dl>
+
+        <div class="section-title">Understanding CRL.A - Criminal Appeal</div>
+        <p>A Criminal Appeal is filed by a person convicted of a crime by a lower court (e.g., a Sessions Court). The appeal challenges the correctness of the judgment of conviction and/or the sentence imposed. In serious cases, such as those under Section 302 (murder) of the Indian Penal Code, the appeal lies before the High Court. The convicted person is the 'Appellant', and the 'State' is the 'Respondent' that prosecuted the case in the trial court.</p>
+
+        <div class="section-title">Orders of the Court</div>
+        <div class="orders-list">
+            <div class="order-item">
+                <div class="order-meta">
+                    <strong>Title:</strong> Bail application rejected | <strong>Type:</strong> order | <strong>Date:</strong> 19-07-2024
+                </div>
+                <p class="order-description">The application for suspension of sentence and grant of bail is considered. Given the gravity of the offense and the evidence on record as noted by the Ld. Trial Court, this court is not inclined to grant bail at this stage. The application is dismissed.</p>
+            </div>
+            <div class="order-item">
+                <div class="order-meta">
+                    <strong>Title:</strong> Admit appeal | <strong>Type:</strong> notice | <strong>Date:</strong> 12-06-2024
+                </div>
+                <p class="order-description">The appeal is admitted for hearing. Call for the trial court records. The registry is directed to prepare the paper book and list the appeal for final hearing in due course.</p>
+            </div>
+        </div>
         
-        <div class="explanation">
-            <h4>What is a Criminal Appeal (CRL.A)?</h4>
-            <p>A Criminal Appeal (CRL.A) is a legal proceeding initiated by a person convicted of a crime to have their case reviewed by a higher court. The convicted person (the "appellant") argues that the trial court made a legal error that led to an incorrect judgment. The appeal is not a new trial; rather, the appellate court reviews the record of the trial court proceedings to determine if any reversible errors were made. The State can also file an appeal to challenge an acquittal or to argue for a more severe sentence. In this case, the appeal is against a conviction under Section 302 of the Indian Penal Code (IPC), which deals with the punishment for murder.</p>
-        </div>
-
-        <h4>ORDERS OF THE COURT</h4>
-
-        <div class="order">
-            <p class="order-title">Bail application rejected</p>
-            <p class="order-meta">Order | Date: 19-07-2024</p>
-            <div class="order-content">
-                <p>This is an application seeking suspension of the sentence and grant of bail to the Appellant during the pendency of the present appeal. The Appellant has been convicted by the learned Sessions Judge for the offence punishable under Section 302 of the Indian Penal Code and has been sentenced to undergo imprisonment for life. Considering the gravity of the offence and the evidence on record, this Court is not inclined to grant the relief prayed for at this stage. The application for suspension of sentence and grant of bail is accordingly dismissed.</p>
-            </div>
-        </div>
-
-        <div class="order">
-            <p class="order-title">Admit appeal</p>
-            <p class="order-meta">Notice | Date: 12-06-2024</p>
-            <div class="order-content">
-                <p>The appeal is admitted for hearing. Call for the nominal roll and the trial court records from the concerned court. List for final hearing in due course. The registry is directed to prepare the paper book and supply the same to the learned counsels for the parties.</p>
-            </div>
-        </div>
-
         <div class="footer">
             <p>This is a computer-generated document and does not require a signature.</p>
+            <p>For Official Use Only</p>
         </div>
     </div>
 </body>
 </html>
+
