@@ -1,203 +1,242 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Court Order - FAO</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order in FAO/123/2023</title>
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.6;
+            color: #333;
             margin: 0;
-            padding: 2rem;
-            position: relative;
+            padding: 0;
+            background-color: #f8f8f8;
         }
+
         .container {
             max-width: 800px;
-            margin: auto;
-            border: 1px solid #ccc;
+            margin: 2rem auto;
             padding: 2rem;
-            background: #fff;
+            border: 1px solid #ccc;
+            background-color: #fff;
             position: relative;
-            z-index: 1;
+            overflow: hidden;
         }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-        }
-        .header .emblem {
-            width: 80px;
-            height: auto;
-            margin-bottom: 0.5rem;
-        }
-        .header h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        .header p {
-            margin: 0.2rem 0;
-            font-size: 0.9rem;
-        }
-        .case-details, .orders, .explanation {
-            margin-bottom: 2rem;
-        }
-        .case-details h3, .orders h3, .explanation h3 {
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .case-details table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .case-details td {
-            padding: 0.5rem;
-            border: 1px solid #eee;
-        }
-        .case-details .label {
-            font-weight: bold;
-            width: 30%;
-        }
-        .order-item {
-            margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #ddd;
-        }
-        .order-item p {
-            margin: 0.5rem 0;
-        }
-        .order-item .title {
-            font-weight: bold;
-        }
-        .order-purpose {
-            background-color: #f5f5f5;
-            padding: 0.75rem;
-            border-radius: 4px;
-            font-size: 0.9em;
-            margin-top: 0.5rem;
-        }
+
         .watermark {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(-45deg);
             opacity: 0.08;
-            z-index: 0;
             pointer-events: none;
+            z-index: 1;
         }
-        .watermark .emblem {
-            width: 400px;
-            height: auto;
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .header .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 0.5rem;
+        }
+
+        .court-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .court-address {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        h1, h2, h3 {
+            font-weight: bold;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-decoration: underline;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .case-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+        }
+
+        .detail-item dt {
+            font-weight: bold;
+        }
+
+        .order {
+            margin-bottom: 1.5rem;
+            border-left: 3px solid #ddd;
+            padding-left: 1rem;
+        }
+
+        .order-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .order-meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-description {
+            margin-bottom: 0.5rem;
+        }
+
+        .order-purpose {
+            background-color: #f5f5f5;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
         }
         .footer {
             text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
             font-size: 0.8rem;
             color: #777;
-            margin-top: 2rem;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
         }
     </style>
 </head>
 <body>
-
-    <div class="watermark">
-        <svg class="emblem" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#4a4a4a">
-                <!-- Lions -->
-                <path d="M50 10 C 40 10, 35 20, 35 20 L 30 45 L 70 45 L 65 20 C 65 20, 60 10, 50 10 Z M 30 20 C 30 20, 25 15, 20 15 L 15 45 L 30 45 Z M 70 20 C 70 20, 75 15, 80 15 L 85 45 L 70 45 Z"/>
-                <!-- Detailed faces -->
-                <path d="M45,25 a5,5 0 0,1 10,0 a5,5 0 0,1 -10,0 M48,23 l2,5 l2,-5 M46,28 l4,2 M25,22 a3,3 0 0,1 5,0 a3,3 0 0,1 -5,0 M75,22 a3,3 0 0,1 5,0 a3,3 0 0,1 -5,0"/>
-                <!-- Mane -->
-                <path d="M35 20 C 30 25, 30 30, 30 35 M65 20 C 70 25, 70 30, 70 35 M40 15 C 40 25, 45 35, 45 45 M60 15 C 60 25, 55 35, 55 45"/>
-                <!-- Plinth -->
-                <path d="M25 45 L 75 45 A 25 5 0 0 0 25 45 Z"/>
-                <!-- Abacus -->
-                <rect x="20" y="50" width="60" height="15" rx="5"/>
-                <!-- Animals on abacus -->
-                <path d="M30 55 h 5 l -2 5 z M 45 55 h5 l 2 5 z M 60 55 h 5 l -2 -5 z M 70 55 h -5 l 2 -5 z"/>
-                <!-- Chakra -->
-                <circle cx="50" cy="57.5" r="5" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-                <path d="M50 52.5 L 50 62.5 M45 57.5 L 55 57.5 M46.5 54 L 53.5 61 M46.5 61 L 53.5 54" stroke="#4a4a4a" stroke-width="0.5"/>
-                <!-- Base -->
-                <path d="M20 65 L 80 65 L 75 75 L 25 75 Z"/>
-                <!-- Motto -->
-                <text x="50" y="95" font-family="'Times New Roman', serif" font-size="12" text-anchor="middle" fill="#4a4a4a">सत्यमेव जयते</text>
-            </g>
-        </svg>
-    </div>
-
     <div class="container">
-        <header class="header">
-            <svg class="emblem" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-                <g fill="#4a4a4a">
-                    <!-- Lions -->
-                    <path d="M50 10 C 40 10, 35 20, 35 20 L 30 45 L 70 45 L 65 20 C 65 20, 60 10, 50 10 Z M 30 20 C 30 20, 25 15, 20 15 L 15 45 L 30 45 Z M 70 20 C 70 20, 75 15, 80 15 L 85 45 L 70 45 Z"/>
-                    <!-- Detailed faces -->
-                    <path d="M45,25 a5,5 0 0,1 10,0 a5,5 0 0,1 -10,0 M48,23 l2,5 l2,-5 M46,28 l4,2 M25,22 a3,3 0 0,1 5,0 a3,3 0 0,1 -5,0 M75,22 a3,3 0 0,1 5,0 a3,3 0 0,1 -5,0"/>
-                    <!-- Mane -->
-                    <path d="M35 20 C 30 25, 30 30, 30 35 M65 20 C 70 25, 70 30, 70 35 M40 15 C 40 25, 45 35, 45 45 M60 15 C 60 25, 55 35, 55 45"/>
-                    <!-- Plinth -->
-                    <path d="M25 45 L 75 45 A 25 5 0 0 0 25 45 Z"/>
-                    <!-- Abacus -->
-                    <rect x="20" y="50" width="60" height="15" rx="5"/>
-                    <!-- Animals on abacus -->
-                    <path d="M30 55 h 5 l -2 5 z M 45 55 h5 l 2 5 z M 60 55 h 5 l -2 -5 z M 70 55 h -5 l 2 -5 z"/>
-                    <!-- Chakra -->
-                    <circle cx="50" cy="57.5" r="5" stroke="#4a4a4a" stroke-width="1" fill="none"/>
-                    <path d="M50 52.5 L 50 62.5 M45 57.5 L 55 57.5 M46.5 54 L 53.5 61 M46.5 61 L 53.5 54" stroke="#4a4a4a" stroke-width="0.5"/>
-                    <!-- Base -->
-                    <path d="M20 65 L 80 65 L 75 75 L 25 75 Z"/>
-                    <!-- Motto -->
-                    <text x="50" y="95" font-family="'Times New Roman', serif" font-size="12" text-anchor="middle" fill="#4a4a4a">सत्यमेव जयते</text>
+        <div class="watermark">
+            <svg class="logo" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="125" cy="125" r="110" fill="none" stroke="#000" stroke-width="6"/>
+                <circle cx="125" cy="125" r="100" fill="none" stroke="#000" stroke-width="2"/>
+                <path d="M125,40 a85,85 0 1,0 0.001,0 Z" fill="none" id="circlePath"/>
+                <text font-size="28" font-family="sans-serif" fill="black">
+                    <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                        • यतो धर्मस्ततो जयः •
+                    </textPath>
+                </text>
+                <g transform="translate(125,125) scale(0.6)">
+                    <path d="M-36 10 L-36 -20 L-32 -20 L-32 -31 C-32 -36 -29 -40 -24 -40 L24 -40 C29 -40 32 -36 32 -31 L32 -20 L36 -20 L36 10 L32 10 L32 20 L24 26 L16 20 L16 10 L24 10 L24 -11 C24 -14 22 -16 19 -16 L-19 -16 C-22 -16 -24 -14 -24 -11 L-24 10 L-16 10 L-16 20 L-24 26 L-32 20 L-32 10 Z" stroke="#000" stroke-width="2" fill="#fff"/>
+                    <path d="M-14 10 L-14 -16 L-10 -16 L-10 -22 C-10 -25 -8 -28 -5 -28 L5 -28 C8 -28 10 -25 10 -22 L10 -16 L14 -16 L14 10 L10 10 L10 14 L5 18 L0 14 L0 10 L-5 14 L-10 10 Z" stroke="#000" stroke-width="2" fill="#fff"/>
+                </g>
+                <circle cx="125" cy="125" r="28" fill="none" stroke="#000" stroke-width="2"/>
+                <circle cx="125" cy="125" r="2" fill="#000"/>
+                <g id="wheel" transform="translate(125,125)">
+                    <path d="M0,0 L0,-28" stroke="#000" stroke-width="1.5" />
+                    <path d="M0,0 L0,28" stroke="#000" stroke-width="1.5" />
+                    <path d="M0,0 L28,0" stroke="#000" stroke-width="1.5" />
+                    <path d="M0,0 L-28,0" stroke="#000" stroke-width="1.5" />
+                    <path d="M0,0 L19.8,-19.8" stroke="#000" stroke-width="1.5" />
+                    <path d="M0,0 L-19.8,19.8" stroke="#000" stroke-width="1.5" />
+                    <path d="M0,0 L19.8,19.8" stroke="#000" stroke-width="1.5" />
+                    <path d="M0,0 L-19.8,-19.8" stroke="#000" stroke-width="1.5" />
                 </g>
             </svg>
-            <h2>IN THE HIGH COURT OF DELHI AT NEW DELHI</h2>
-            <p>(CIVIL APPELLATE JURISDICTION)</p>
-            <p>Sher Shah Road, New Delhi - 110503 | Website: delhihighcourt.nic.in</p>
-        </header>
+        </div>
+        <div class="content">
+            <div class="header">
+                <svg class="logo" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="125" cy="125" r="110" fill="none" stroke="#000" stroke-width="6"/>
+                    <circle cx="125" cy="125" r="100" fill="none" stroke="#000" stroke-width="2"/>
+                    <path d="M125,40 a85,85 0 1,0 0.001,0 Z" fill="none" id="circlePathHeader"/>
+                    <text font-size="28" font-family="sans-serif" fill="black">
+                        <textPath href="#circlePathHeader" startOffset="50%" text-anchor="middle">
+                            • यतो धर्मस्ततो जयः •
+                        </textPath>
+                    </text>
+                    <g transform="translate(125,125) scale(0.6)">
+                        <path d="M-36 10 L-36 -20 L-32 -20 L-32 -31 C-32 -36 -29 -40 -24 -40 L24 -40 C29 -40 32 -36 32 -31 L32 -20 L36 -20 L36 10 L32 10 L32 20 L24 26 L16 20 L16 10 L24 10 L24 -11 C24 -14 22 -16 19 -16 L-19 -16 C-22 -16 -24 -14 -24 -11 L-24 10 L-16 10 L-16 20 L-24 26 L-32 20 L-32 10 Z" stroke="#000" stroke-width="2" fill="#fff"/>
+                        <path d="M-14 10 L-14 -16 L-10 -16 L-10 -22 C-10 -25 -8 -28 -5 -28 L5 -28 C8 -28 10 -25 10 -22 L10 -16 L14 -16 L14 10 L10 10 L10 14 L5 18 L0 14 L0 10 L-5 14 L-10 10 Z" stroke="#000" stroke-width="2" fill="#fff"/>
+                    </g>
+                    <circle cx="125" cy="125" r="28" fill="none" stroke="#000" stroke-width="2"/>
+                    <circle cx="125" cy="125" r="2" fill="#000"/>
+                    <g transform="translate(125,125)">
+                        <path d="M0,0 L0,-28" stroke="#000" stroke-width="1.5" />
+                        <path d="M0,0 L0,28" stroke="#000" stroke-width="1.5" />
+                        <path d="M0,0 L28,0" stroke="#000" stroke-width="1.5" />
+                        <path d="M0,0 L-28,0" stroke="#000" stroke-width="1.5" />
+                        <path d="M0,0 L19.8,-19.8" stroke="#000" stroke-width="1.5" />
+                        <path d="M0,0 L-19.8,19.8" stroke="#000" stroke-width="1.5" />
+                        <path d="M0,0 L19.8,19.8" stroke="#000" stroke-width="1.5" />
+                        <path d="M0,0 L-19.8,-19.8" stroke="#000" stroke-width="1.5" />
+                    </g>
+                </svg>
+                <h2 class="court-title">IN THE HIGH COURT OF DELHI AT NEW DELHI</h2>
+                <p class="court-address">Sher Shah Road, New Delhi - 110503 | www.delhihighcourt.nic.in</p>
+            </div>
 
-        <section class="case-details">
-            <h3>Case Details</h3>
-            <table>
-                <tr><td class="label">Case Type</td><td>FAO - First Appeal from Order</td></tr>
-                <tr><td class="label">Case Number</td><td>789/2023</td></tr>
-                <tr><td class="label">Parties</td><td><strong>Creative Designs Inc.</strong> (Appellant) vs. <strong>Innovate Tech Solutions</strong> (Respondent)</td></tr>
-                <tr><td class="label">Advocate for Appellant</td><td>Ms. Sunita Reddy</td></tr>
-                <tr><td class="label">Advocate for Respondent</td><td>Mr. Sameer Jain</td></tr>
-            </table>
-        </section>
+            <h1>FIRST APPEAL FROM ORDER (FAO)</h1>
 
-        <section class="explanation">
-            <h3>Understanding a First Appeal from Order (FAO)</h3>
-            <p>A First Appeal from Order (FAO) is a type of appeal filed in a High Court against specific orders passed by a lower court (like a District Court) during the course of a lawsuit, even before the final judgment is delivered. These are not appeals against the final verdict, but against interim (temporary) orders. For example, an order granting or refusing a temporary injunction can be challenged through an FAO.</p>
-        </section>
+            <h2>Case Details</h2>
+            <div class="case-details-grid">
+                <div class="detail-item"><dt>Case No:</dt><dd>FAO/123/2023</dd></div>
+                <div class="detail-item"><dt>Parties:</dt><dd>Creative Designs Inc. vs. Innovate Tech Solutions</dd></div>
+                <div class="detail-item"><dt>Petitioner Advocate:</dt><dd>Sunita Reddy</dd></div>
+                <div class="detail-item"><dt>Respondent Advocate:</dt><dd>Anil Kapoor</dd></div>
+            </div>
 
-        <section class="orders">
-            <h3>Orders of the Court</h3>
-            <div class="order-item">
-                <p class="title">Title: Stay on lower court order | Type: order | Date: 25-07-2024</p>
-                <p>The operation of the impugned order dated 01-07-2024 passed by the Ld. Additional District Judge is stayed till the next date of hearing. The respondent is restrained from creating any third-party rights in the suit property.</p>
+            <h2>About This Case Type</h2>
+            <p>
+                A <strong>First Appeal from Order (FAO)</strong> is an appeal filed against an interim or preliminary order of a lower court, not against a final judgment. These orders are passed during the pendency of a suit to address urgent matters. A common example is an appeal against an order granting or refusing a temporary injunction. The purpose of an FAO is to get a quick review of an interim order that could significantly affect a party's rights before the main case is decided. In this mock case, the appeal challenges an ad-interim injunction order in a commercial dispute.
+            </p>
+
+            <h2>Orders of the Court</h2>
+
+            <div class="order">
+                <p class="order-title">Stay on lower court order</p>
+                <p class="order-meta">Type: order | Date: 25-07-2024</p>
+                <p class="order-description">The operation of the impugned order of the trial court dated [date] is stayed till the next date of hearing. The respondent is restrained from taking any coercive action against the appellant based on the said order.</p>
                 <div class="order-purpose">
-                    <strong>Purpose of the Order:</strong> The High Court has temporarily paused or "stayed" the decision of the lower court. This is a significant relief for the appellant because it prevents the lower court's order from being enforced while the appeal is being considered. This is often done to prevent irreversible harm.
+                    <strong>Purpose of the Order:</strong> A stay order temporarily freezes the effect of the lower court's decision. This is a significant relief for the appellant, as it prevents immediate harm while the High Court examines the correctness of the interim injunction. It suggests the High Court sees a prima facie case (a strong initial argument) in favor of the appellant and believes that maintaining the status quo is necessary to prevent injustice.
                 </div>
             </div>
-            <div class="order-item">
-                <p class="title">Title: Notice of appeal | Type: notice | Date: 20-06-2024</p>
-                <p>Issue notice of the appeal to the respondent, returnable on 25-07-2024. The appellant is directed to provide a complete set of the appeal paper book to the respondent's counsel.</p>
+
+            <div class="order">
+                <p class="order-title">Notice of appeal</p>
+                <p class="order-meta">Type: notice | Date: 20-06-2024</p>
+                <p class="order-description">Issue notice of the appeal to the respondent, returnable on the next date. The appellant is directed to provide a complete set of the appeal paper book to the respondent's counsel within one week.</p>
                 <div class="order-purpose">
-                    <strong>Purpose of the Order:</strong> This is the initial step where the High Court formally informs the other party (the respondent) that an appeal has been filed against them. It gives the respondent a chance to appear before the court and defend the lower court's order.
+                    <strong>Purpose of the Order:</strong> This is the first step in any appeal. The court formally notifies the opposing party (the respondent) that an appeal has been filed against them. This ensures that the principles of natural justice are followed, giving the respondent a fair opportunity to appear and defend the lower court's order.
                 </div>
             </div>
-        </section>
-
-        <footer class="footer">
-            <p>This is a computer-generated document for informational purposes only. The content should be verified with the certified copy issued by the High Court of Delhi Registry.</p>
-        </footer>
-
+             <div class="footer">
+                <p>This is a computer-generated document for demonstration purposes only.</p>
+                <p>Please verify the contents with the certified copy of the order from the court registry.</p>
+            </div>
+        </div>
     </div>
-
 </body>
 </html>
 
