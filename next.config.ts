@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -18,6 +19,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // The dev server logs a warning about cross-origin requests.
+  // This is expected in a cloud development environment.
+  devIndicators: {
+    allowedDevOrigins: [
+        '*.cluster-w5vd22whf5gmav2vgkomwtc4go.cloudworkstations.dev'
+    ]
+  }
 };
 
 export default nextConfig;
