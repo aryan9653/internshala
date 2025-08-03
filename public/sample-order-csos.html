@@ -1,70 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Order - CS(OS) 123/2023</title>
+    <title>Court Order - CS(OS)</title>
     <style>
-        body { font-family: 'Times New Roman', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 2rem; }
-        .header img { width: 50px; vertical-align: middle; }
-        .header h1 { margin: 0; font-size: 1.8rem; }
-        .header p { margin: 0.2rem 0; font-size: 0.9rem; }
-        .case-details, .orders { margin-bottom: 2rem; }
-        h2 { border-bottom: 1px solid #999; padding-bottom: 0.5rem; margin-top: 2rem; font-size: 1.4rem; }
-        .detail-grid { display: grid; grid-template-columns: 180px 1fr; gap: 0.5rem 1rem; }
-        .detail-grid dt { font-weight: bold; }
-        .order-item { border-left: 3px solid #ddd; padding-left: 1rem; margin-bottom: 1.5rem; }
-        .order-meta { font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .order-purpose { background-color: #f4f4f4; border-left: 3px solid #999; padding: 0.8rem; margin-top: 0.5rem; font-style: italic; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 300px;
+            opacity: 0.1;
+            transform: rotate(-30deg);
+            z-index: -1;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 2rem;
+            border: 1px solid #ccc;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .header img {
+            width: 50px;
+            margin-bottom: 0.5rem;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+        }
+        .case-details, .orders, .explanation {
+            margin-bottom: 2rem;
+        }
+        h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+            width: 30%;
+        }
+        .order-item {
+            border-left: 3px solid #666;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .order-item strong {
+            font-size: 1.1rem;
+        }
+        .order-item .meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0.25rem 0 0.5rem;
+        }
+        .purpose {
+            background-color: #f0f8ff;
+            border: 1px solid #add8e6;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        .purpose strong {
+            color: #005a9c;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+            font-size: 0.8rem;
+            color: #777;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>" alt="Emblem of India">
             <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
             <p>(ORDINARY ORIGINAL CIVIL JURISDICTION)</p>
-            <p><a href="http://delhihighcourt.nic.in">delhihighcourt.nic.in</a></p>
+            <p>Sher Shah Road, New Delhi - 110503 | Website: www.delhihighcourt.nic.in</p>
         </header>
 
         <section class="case-details">
             <h2>Case Details</h2>
-            <dl class="detail-grid">
-                <dt>Case Type:</dt> <dd>CS(OS) - Civil Suit (Original Side)</dd>
-                <dt>Case Number:</dt> <dd>123/2023</dd>
-                <dt>Parties:</dt> <dd>ABC Corporation Ltd. (Plaintiff) vs. XYZ Pvt. Ltd. (Defendant)</dd>
-                <dt>Subject:</dt> <dd>Suit for recovery of money and damages for breach of contract.</dd>
-                <dt>Presiding Judge:</dt> <dd>Hon'ble Justice Rajesh Kumar</dd>
-            </dl>
+            <table>
+                <tr>
+                    <th>Case Type</th>
+                    <td>CS(OS) - Civil Suit (Original Side)</td>
+                </tr>
+                <tr>
+                    <th>Case Number</th>
+                    <td>CS(OS) 123/2023</td>
+                </tr>
+                <tr>
+                    <th>Parties</th>
+                    <td><strong>ABC Corporation Ltd.</strong> (Plaintiff) vs. <strong>XYZ Pvt. Ltd.</strong> (Defendant)</td>
+                </tr>
+                 <tr>
+                    <th>Advocate for Plaintiff</th>
+                    <td>Rajiv Malhotra</td>
+                </tr>
+                <tr>
+                    <th>Advocate for Defendant</th>
+                    <td>Sanjana Kapoor</td>
+                </tr>
+                <tr>
+                    <th>Subject</th>
+                    <td>Suit for recovery of money and damages for breach of contract.</td>
+                </tr>
+            </table>
         </section>
 
-        <section class="case-explanation">
-            <h2>Understanding CS(OS) - Civil Suit (Original Side)</h2>
-            <p>A Civil Suit (Original Side) is a lawsuit of a civil nature filed directly in the High Court, which is acting as the court of first instance (i.e., its 'Original Jurisdiction'). This typically happens for cases of a specific nature or high pecuniary value, as defined by law. This case, involving a claim for money and damages, is a classic example of a commercial dispute handled by the High Court's Original Side.</p>
+        <section class="explanation">
+            <h2>Understanding a Civil Suit (Original Side) - CS(OS)</h2>
+            <p>A <strong>Civil Suit (Original Side)</strong> means the High Court is hearing the case for the first time, similar to a trial court. This happens for civil matters of high pecuniary (monetary) value. In Delhi, suits where the value of the dispute is over a certain threshold (e.g., ₹2 crore) are filed directly in the High Court. 'Original Jurisdiction' is the power to hear a case from its inception, as opposed to 'Appellate Jurisdiction,' which is the power to review a lower court's decision. These suits cover disputes related to contracts, property, intellectual property rights, etc.</p>
         </section>
 
         <section class="orders">
             <h2>Orders of the Court</h2>
             
             <div class="order-item">
-                <p class="order-meta">Title: Application for summary judgment | Type: order | Date: 15-07-2024</p>
-                <p>The application filed by the Plaintiff under Order XIIIA of the Code of Civil Procedure, 1908, for summary judgment is hereby dismissed. The court is of the view that the Defendant has raised triable issues that require leading of evidence. The case will proceed to trial.</p>
-                <div class="order-purpose">
-                    <p><strong>Purpose of the Order:</strong> A summary judgment is a shortcut to a final decision without a full trial. The Plaintiff likely argued that the Defendant had no real defense. By dismissing this application, the court has decided that the Defendant's arguments have merit and deserve a full hearing with witnesses and evidence. This ensures a fair trial.</p>
+                <strong>Application for summary judgment dismissed</strong>
+                <p class="meta">Type: order | Date: 15-07-2024</p>
+                <p>The application filed by the Plaintiff under Order XIIIA for summary judgment is dismissed. The court is of the view that there are triable issues that require leading of evidence. The case will now proceed to trial as per the regular procedure.</p>
+                <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> A summary judgment is a request to decide the case without a full trial, arguing that the other party has no real prospect of succeeding. By dismissing this application, the court has decided that the defendant's case has enough merit to warrant a full trial where evidence will be presented and witnesses examined. This is a setback for the plaintiff who hoped for a quick resolution.</p>
                 </div>
             </div>
 
             <div class="order-item">
-                <p class="order-meta">Title: Summons issued to defendant | Type: notice | Date: 10-05-2024</p>
-                <p>Summons to be served upon the Defendant. The Defendant is directed to file a written statement within 30 days of the receipt of the summons. The summons shall indicate that if the defendant fails to appear, the suit may be heard and decided ex-parte.</p>
-                <div class="order-purpose">
-                    <p><strong>Purpose of the Order:</strong> This is the formal notification to the defendant that they are being sued. The summons legally obligates the defendant to appear in court and respond to the plaintiff's claims. The direction to file a "written statement" is the instruction to provide a formal, point-by-point reply to the allegations made in the suit.</p>
+                <strong>Summons issued to defendant</strong>
+                <p class="meta">Type: notice | Date: 10-05-2024</p>
+                <p>Summons to be served upon the defendant through all permissible modes. The defendant is directed to file a written statement within 30 days of the receipt of summons. The parties are also directed to file their affidavits of admission/denial of documents.</p>
+                 <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> This is the initial step after a suit is filed. The court officially notifies the defendant about the lawsuit and commands them to appear and defend their case. The 'written statement' is the defendant's formal reply to the plaintiff's allegations. This order ensures that the legal process is followed and both parties have a chance to present their side of the story.</p>
                 </div>
             </div>
 
         </section>
+
+        <footer class="footer">
+            <p>This is a computer-generated document for informational purposes only. The content should be verified with certified copies obtained from the court registry.</p>
+            <p>&copy; 2024 High Court of Delhi. All rights reserved.</p>
+        </footer>
     </div>
+
 </body>
 </html>
+
+    

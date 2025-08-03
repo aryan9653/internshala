@@ -1,70 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Order - W.P.(C) 123/2023</title>
+    <title>Court Order - W.P.(C)</title>
     <style>
-        body { font-family: 'Times New Roman', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 2rem; }
-        .header img { width: 50px; vertical-align: middle; }
-        .header h1 { margin: 0; font-size: 1.8rem; }
-        .header p { margin: 0.2rem 0; font-size: 0.9rem; }
-        .case-details, .orders { margin-bottom: 2rem; }
-        h2 { border-bottom: 1px solid #999; padding-bottom: 0.5rem; margin-top: 2rem; font-size: 1.4rem; }
-        .detail-grid { display: grid; grid-template-columns: 180px 1fr; gap: 0.5rem 1rem; }
-        .detail-grid dt { font-weight: bold; }
-        .order-item { border-left: 3px solid #ddd; padding-left: 1rem; margin-bottom: 1.5rem; }
-        .order-meta { font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .order-purpose { background-color: #f4f4f4; border-left: 3px solid #999; padding: 0.8rem; margin-top: 0.5rem; font-style: italic; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 300px;
+            opacity: 0.1;
+            transform: rotate(-30deg);
+            z-index: -1;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 2rem;
+            border: 1px solid #ccc;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .header img {
+            width: 50px;
+            margin-bottom: 0.5rem;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+        }
+        .case-details, .orders, .explanation {
+            margin-bottom: 2rem;
+        }
+        h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+            width: 30%;
+        }
+        .order-item {
+            border-left: 3px solid #666;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .order-item strong {
+            font-size: 1.1rem;
+        }
+        .order-item .meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0.25rem 0 0.5rem;
+        }
+        .purpose {
+            background-color: #f0f8ff;
+            border: 1px solid #add8e6;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        .purpose strong {
+            color: #005a9c;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+            font-size: 0.8rem;
+            color: #777;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>" alt="Emblem of India">
             <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
-            <p>(ORDINARY ORIGINAL CIVIL JURISDICTION)</p>
-            <p><a href="http://delhihighcourt.nic.in">delhihighcourt.nic.in</a></p>
+            <p>(CIVIL WRIT JURISDICTION)</p>
+            <p>Sher Shah Road, New Delhi - 110503 | Website: www.delhihighcourt.nic.in</p>
         </header>
 
         <section class="case-details">
             <h2>Case Details</h2>
-            <dl class="detail-grid">
-                <dt>Case Type:</dt> <dd>W.P.(C) - Writ Petition (Civil)</dd>
-                <dt>Case Number:</dt> <dd>123/2023</dd>
-                <dt>Parties:</dt> <dd>Green Earth Foundation (Petitioner) vs. Union of India & Ors. (Respondents)</dd>
-                <dt>Subject:</dt> <dd>Public Interest Litigation regarding environmental clearances.</dd>
-                <dt>Presiding Judge:</dt> <dd>Hon'ble Justice Rajesh Kumar</dd>
-            </dl>
+            <table>
+                <tr>
+                    <th>Case Type</th>
+                    <td>W.P.(C) - Writ Petition (Civil)</td>
+                </tr>
+                <tr>
+                    <th>Case Number</th>
+                    <td>W.P.(C) 123/2023</td>
+                </tr>
+                <tr>
+                    <th>Parties</th>
+                    <td><strong>Green Earth Foundation</strong> (Petitioner) vs. <strong>Union of India & Ors.</strong> (Respondents)</td>
+                </tr>
+                 <tr>
+                    <th>Advocate for Petitioner</th>
+                    <td>Priya Sharma</td>
+                </tr>
+                <tr>
+                    <th>Advocate for Respondents</th>
+                    <td>Additional Solicitor General</td>
+                </tr>
+                <tr>
+                    <th>Subject</th>
+                    <td>Public Interest Litigation regarding environmental clearances for a new industrial project.</td>
+                </tr>
+            </table>
         </section>
 
-        <section class="case-explanation">
-            <h2>Understanding W.P.(C) - Writ Petition (Civil)</h2>
-            <p>A Writ Petition (Civil) is a formal written order from a court, in this case, the High Court. It is filed to enforce fundamental rights guaranteed by the Constitution of India. This type of petition is used when a citizen or entity believes their rights have been violated by the state or a government body. In a Public Interest Litigation (PIL), like this case, the petition is filed for the protection of public interest, such as pollution, terrorism, and road safety.</p>
+        <section class="explanation">
+            <h2>Understanding a Writ Petition (Civil) - W.P.(C)</h2>
+            <p>A <strong>Writ Petition</strong> is a powerful legal tool used to enforce fundamental rights guaranteed by the Constitution of India. It is filed directly in the High Court (under Article 226) or the Supreme Court (under Article 32). A 'Civil' writ petition, or W.P.(C), deals with non-criminal matters where a citizen or group (the 'petitioner') alleges that a government body or public authority (the 'respondent') has violated their rights or failed to perform its legal duty. This case, being a Public Interest Litigation (PIL), is a special type of writ petition filed for the protection of public interest, such as environmental protection.</p>
         </section>
 
         <section class="orders">
             <h2>Orders of the Court</h2>
             
             <div class="order-item">
-                <p class="order-meta">Title: Direction to file status report | Type: order | Date: 22-07-2024</p>
-                <p>Respondents are directed to file a detailed status report on the measures taken to comply with environmental norms within four weeks. The report should be supported by an affidavit from a senior official not below the rank of Joint Secretary.</p>
-                <div class="order-purpose">
-                    <p><strong>Purpose of the Order:</strong> This directive is crucial for the court to understand the current situation and the actions taken by the government so far. By asking for a sworn affidavit, the court ensures accountability and the authenticity of the information provided. It's a standard step in PILs to gather facts before making further decisions.</p>
+                <strong>Direction to file status report</strong>
+                <p class="meta">Type: order | Date: 22-07-2024</p>
+                <p>Respondents are directed to file a detailed status report on the measures taken to comply with environmental norms within four weeks. The report should be supported by an affidavit from a senior official not below the rank of a Joint Secretary.</p>
+                <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> The court needs accurate information from the government to make a decision. This order compels the respondents (the government departments) to provide a formal, sworn statement detailing their actions. This creates a factual record and holds the officials accountable for the information they provide, forming the basis for the court's future decisions.</p>
                 </div>
             </div>
 
             <div class="order-item">
-                <p class="order-meta">Title: Notice issued | Type: notice | Date: 18-06-2024</p>
-                <p>Issue notice to all concerned parties. Reply to be filed within four weeks. The petitioner is directed to supply a complete set of the petition to the respondents through their counsel. The matter is listed for further hearing on 22-07-2024.</p>
-                <div class="order-purpose">
-                     <p><strong>Purpose of the Order:</strong> This is the initial step in any court case. The 'notice' formally informs the respondents (the government bodies in this case) that a case has been filed against them. This adheres to the principle of 'audi alteram partem' (hear the other side), a cornerstone of natural justice. It gives the respondents a fair opportunity to present their side of the story.</p>
+                <strong>Notice issued</strong>
+                <p class="meta">Type: notice | Date: 18-06-2024</p>
+                <p>Issue notice to all concerned parties. Reply to be filed within four weeks. The petitioner is directed to supply a complete set of the petition to the respondents to enable them to file a response. The matter is listed for further hearing on 22-07-2024.</p>
+                 <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> This is the first formal step after the court decides a case is worth hearing. It ensures that all parties involved are officially notified about the petition and are given a fair chance to present their side of the story. Setting a deadline for the reply ensures that the case progresses in a timely manner.</p>
                 </div>
             </div>
 
         </section>
+
+        <footer class="footer">
+            <p>This is a computer-generated document for informational purposes only. The content should be verified with certified copies obtained from the court registry.</p>
+            <p>&copy; 2024 High Court of Delhi. All rights reserved.</p>
+        </footer>
     </div>
+
 </body>
 </html>
+
+    

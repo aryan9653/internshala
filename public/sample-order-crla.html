@@ -1,70 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Order - CRL.A 123/2023</title>
+    <title>Court Order - CRL.A</title>
     <style>
-        body { font-family: 'Times New Roman', serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 1rem; margin-bottom: 2rem; }
-        .header img { width: 50px; vertical-align: middle; }
-        .header h1 { margin: 0; font-size: 1.8rem; }
-        .header p { margin: 0.2rem 0; font-size: 0.9rem; }
-        .case-details, .orders { margin-bottom: 2rem; }
-        h2 { border-bottom: 1px solid #999; padding-bottom: 0.5rem; margin-top: 2rem; font-size: 1.4rem; }
-        .detail-grid { display: grid; grid-template-columns: 180px 1fr; gap: 0.5rem 1rem; }
-        .detail-grid dt { font-weight: bold; }
-        .order-item { border-left: 3px solid #ddd; padding-left: 1rem; margin-bottom: 1.5rem; }
-        .order-meta { font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .order-purpose { background-color: #f4f4f4; border-left: 3px solid #999; padding: 0.8rem; margin-top: 0.5rem; font-style: italic; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 300px;
+            opacity: 0.1;
+            transform: rotate(-30deg);
+            z-index: -1;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 2rem;
+            border: 1px solid #ccc;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        .header img {
+            width: 50px;
+            margin-bottom: 0.5rem;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+        }
+        .case-details, .orders, .explanation {
+            margin-bottom: 2rem;
+        }
+        h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+            width: 30%;
+        }
+        .order-item {
+            border-left: 3px solid #666;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .order-item strong {
+            font-size: 1.1rem;
+        }
+        .order-item .meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0.25rem 0 0.5rem;
+        }
+        .purpose {
+            background-color: #f0f8ff;
+            border: 1px solid #add8e6;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        .purpose strong {
+            color: #005a9c;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+            font-size: 0.8rem;
+            color: #777;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
         <header class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 125.44 195.32'><path d='M114.18,73.45a52.6,52.6,0,0,0-51.46-52.2,52.6,52.6,0,0,0-51.46,52.2c0,28.74,23.08,52.2,51.46,52.2S114.18,102.19,114.18,73.45Zm-51.46,41a41.34,41.34,0,0,1-40.23-41,41.34,41.34,0,0,1,40.23-41,41.34,41.34,0,0,1,40.23,41A41.34,41.34,0,0,1,62.72,114.47Z M18.94,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,18.94,136.57Z M106.5,136.57a4.4,4.4,0,0,0,4.38-4.38V96.34a4.38,4.38,0,1,0-8.76,0v35.85A4.4,4.4,0,0,0,106.5,136.57Z M31.5,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M94,159.25a4.38,4.38,0,1,0-8.76,0v23.59a4.38,4.38,0,1,0,8.76,0Z M44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M81.44,179.35a4.38,4.38,0,1,0-8.76,0v11.59a4.38,4.38,0,1,0,8.76,0Z M62.72,0A11.23,11.23,0,1,0,74,11.23,11.24,11.24,0,0,0,62.72,0Z M62.72,168.08a13.62,13.62,0,0,0,0,27.24,13.62,13.62,0,0,0,0-27.24Z'/></svg>" alt="Emblem of India">
             <h1>IN THE HIGH COURT OF DELHI AT NEW DELHI</h1>
             <p>(CRIMINAL APPELLATE JURISDICTION)</p>
-            <p><a href="http://delhihighcourt.nic.in">delhihighcourt.nic.in</a></p>
+            <p>Sher Shah Road, New Delhi - 110503 | Website: www.delhihighcourt.nic.in</p>
         </header>
 
         <section class="case-details">
             <h2>Case Details</h2>
-            <dl class="detail-grid">
-                <dt>Case Type:</dt> <dd>CRL.A - Criminal Appeal</dd>
-                <dt>Case Number:</dt> <dd>123/2023</dd>
-                <dt>Parties:</dt> <dd>Arjun Kumar (Appellant) vs. State (NCT of Delhi) (Respondent)</dd>
-                <dt>Subject:</dt> <dd>Appeal against judgment of conviction and order on sentence under Section 302 of the Indian Penal Code.</dd>
-                <dt>Presiding Judge:</dt> <dd>Hon'ble Justice Rajesh Kumar</dd>
-            </dl>
+            <table>
+                <tr>
+                    <th>Case Type</th>
+                    <td>CRL.A - Criminal Appeal</td>
+                </tr>
+                <tr>
+                    <th>Case Number</th>
+                    <td>CRL.A 123/2023</td>
+                </tr>
+                <tr>
+                    <th>Parties</th>
+                    <td><strong>Arjun Kumar</strong> (Appellant) vs. <strong>State (NCT of Delhi)</strong> (Respondent)</td>
+                </tr>
+                 <tr>
+                    <th>Advocate for Appellant</th>
+                    <td>Vikram Singh</td>
+                </tr>
+                <tr>
+                    <th>Advocate for Respondent</th>
+                    <td>State Counsel</td>
+                </tr>
+                <tr>
+                    <th>Subject</th>
+                    <td>Appeal against conviction under Section 302 IPC (Murder).</td>
+                </tr>
+            </table>
         </section>
 
-        <section class="case-explanation">
-            <h2>Understanding CRL.A - Criminal Appeal</h2>
-            <p>A Criminal Appeal (CRL.A) is filed by a person convicted of a crime in a lower court (the 'trial court'). The appeal is a request to a higher court (the High Court in this instance) to review the trial court's decision, arguing that errors of law or fact were made. This is a fundamental right of the accused to ensure that the conviction and sentence are just and lawful. In this case, the appeal is against a murder conviction (Section 302 IPC).</p>
+        <section class="explanation">
+            <h2>Understanding a Criminal Appeal (CRL.A)</h2>
+            <p>A <strong>Criminal Appeal (CRL.A)</strong> is a formal request made to a higher court to review a decision made by a lower court in a criminal case. The appellant (the party filing the appeal, usually the convicted person) argues that the trial court made a legal error that affected the outcome of the case. Common grounds for appeal include misinterpretation of law, improper admission or exclusion of evidence, or that the conviction was not supported by the evidence presented. The High Court has the power to uphold the conviction, overturn it (acquit the appellant), or order a retrial.</p>
         </section>
 
         <section class="orders">
             <h2>Orders of the Court</h2>
             
             <div class="order-item">
-                <p class="order-meta">Title: Bail application rejected | Type: order | Date: 19-07-2024</p>
-                <p>The application for suspension of sentence and grant of bail during the pendency of the appeal is dismissed. The court does not find sufficient grounds to grant bail at this stage, considering the gravity of the offence.</p>
-                <div class="order-purpose">
-                    <p><strong>Purpose of the Order:</strong> While an appeal is pending, the convicted person can ask to be released on bail. The court rejected this request, likely because the crime (murder) is very serious and the evidence presented at trial was strong. The court's primary concern here is ensuring the convicted person does not abscond or pose a danger to society while the appeal is heard.</p>
+                <strong>Bail application rejected</strong>
+                <p class="meta">Type: order | Date: 19-07-2024</p>
+                <p>The application for suspension of sentence and grant of bail is dismissed after considering the gravity of the offence and the evidence on record. The court finds no sufficient grounds to suspend the sentence pending the final disposal of the appeal.</p>
+                <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> In a criminal appeal, the appellant can request the court to suspend their sentence and release them on bail until the appeal is decided. This order indicates that the court reviewed the request but denied it, meaning the appellant will remain in custody while the appeal is being heard. This is common in cases involving serious offenses like murder.</p>
                 </div>
             </div>
 
             <div class="order-item">
-                <p class="order-meta">Title: Admit appeal | Type: notice | Date: 12-06-2024</p>
-                <p>The appeal is admitted for hearing. Call for the trial court records. The Registry is directed to prepare the paper book and supply a copy to the counsel for the parties.</p>
-                <div class="order-purpose">
-                    <p><strong>Purpose of the Order:</strong> 'Admitting' the appeal means the High Court has found that there are valid legal questions to be considered and has agreed to hear the case in full. 'Calling for trial court records' is a critical step where the High Court requests all the evidence, testimony, and judgments from the original trial. This record forms the basis of the entire appeal hearing.</p>
+                <strong>Admit appeal and call for records</strong>
+                <p class="meta">Type: notice | Date: 12-06-2024</p>
+                <p>The appeal is admitted for hearing. The registry is directed to call for the trial court records, including the evidence and judgment, to enable the court to hear the appeal. Notice of appeal is formally served on the State.</p>
+                 <div class="purpose">
+                    <p><strong>Purpose of the Order:</strong> This is a crucial first step in the appeal process. 'Admitting' the appeal means the court has found that there are valid legal questions to be considered. By 'calling for trial court records,' the High Court ensures it has all the necessary documents from the original trial to properly review the case and the arguments made by the appellant.</p>
                 </div>
             </div>
 
         </section>
+
+        <footer class="footer">
+            <p>This is a computer-generated document for informational purposes only. The content should be verified with certified copies obtained from the court registry.</p>
+            <p>&copy; 2024 High Court of Delhi. All rights reserved.</p>
+        </footer>
     </div>
+
 </body>
 </html>
+
+    
